@@ -1,7 +1,0 @@
-<h4>Headers</h4>
-<pre><%= request[type + '_headers'].map { |k,v| "#{ k }: #{ v }" }.join("\n") %></pre>
-
-<% if request[type + '_body'] %>
-  <h4>Body</h4>
-  <pre><%= request[type + '_body'] %></pre>
-<% end %>
