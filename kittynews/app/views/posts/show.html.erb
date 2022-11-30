@@ -1,0 +1,3 @@
+<div id="react-app" data-props="<%= { current_user: current_user.nil? ? "" : current_user.id, signed_in: user_signed_in?, postId: @post.id, post: @post }.to_json %>"></div>
+
+<%= javascript_pack_tag 'posts-show' %>

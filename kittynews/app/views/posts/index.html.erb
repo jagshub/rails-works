@@ -1,0 +1,5 @@
+<div id="react-app" data-props="<%= { current_user: current_user.nil? ? "" : current_user.id,
+                                      post: {id: 0},
+                                      signed_in: user_signed_in? }.to_json  %>"></div>
+
+<%= javascript_pack_tag 'posts-index' %>
