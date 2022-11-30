@@ -1,0 +1,155 @@
+.page-section {
+  clear: both;
+  margin-bottom: 40px;
+}
+
+.page-section--heading {
+  h2 {
+    display: inline-block;
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.page-section--heading--delete {
+  float: right;
+}
+
+.page-layout-hints {
+  margin-top: 40px;
+}
+
+.page-layout-hints h3 {
+  margin-bottom: 20px;
+}
+
+.page-layout-hints--mockup {
+  display: inline-block;
+}
+
+.page-layout-hints--instructions {
+  display: inline-block;
+  margin: 20px 0 0;
+  vertical-align: top;
+}
+
+.admin--user-merge--form {
+  label {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 14px;
+    padding: 5px 0;
+  }
+
+  input[type='text'] {
+    display: block;
+    width: 20em;
+  }
+}
+
+.count {
+  text-align: right;
+}
+
+.newsletter-posts {
+  max-height: 215px;
+  overflow: auto;
+}
+
+.admin--uploader {
+  overflow: hidden;
+  border: 1px solid #bbb;
+  border-radius: 3px;
+  padding: 5px;
+}
+
+.admin--uploader--preview {
+  float: left;
+  margin-right: 10px;
+  height: 50px;
+
+  img {
+    height: 50px;
+  }
+}
+
+.admin--uploader--hint {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+@media (min-width: 1000px) {
+  .admin--newsletter-builder {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .admin--newsletter-builder--preview {
+    margin-left: 20px;
+  }
+}
+
+.admin--newsletter-builder textarea {
+  height: 40px;
+}
+
+.admin--newsletter-builder--preview {
+  min-width: 610px;
+  width: 100%;
+
+  fieldset > div {
+    margin: 0 5px 5px 5px;
+    background: white;
+  }
+}
+
+#admin-newsletter-posts {
+  table td {
+    vertical-align: middle;
+    text-align: center;
+  }
+  table input[type='text'] {
+    width: 95%;
+  }
+  table select {
+    width: 100%;
+  }
+}
+
+.bip-editable {
+  cursor: pointer;
+
+  &.status_tag {
+    box-shadow: 0 1px 2px 0 black;
+    color: white;
+    text-decoration: none;
+  }
+}
+
+.non-editable {
+  &.status_tag {
+    color: white;
+    text-decoration: none;
+
+    &.pending {
+      background-color: #ff8484;
+    }
+
+    &.complete {
+      background-color: #4dc667;
+    }
+  }
+}
+
+.codeblock {
+  padding: 10px;
+  background: lightgray;
+  border: 1px solid grey;
+  border-radius: 5px;
+  font-family: 'Courier New', Courier, monospace;
+  display: block;
+  white-space: pre-wrap;
+}

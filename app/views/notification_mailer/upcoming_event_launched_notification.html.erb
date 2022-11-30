@@ -1,0 +1,54 @@
+<%= transactional_layout_v2 do %>
+  <%= mobile_preview_tag "#{@post.name} is live!" %>
+
+  <div class="transactional-v2-layout-main">
+    <%= render 'mailer/transactional_v2_header', destination: root_url(@tracking_params), tracking_params: @tracking_params %>
+    <table class="announcement-container-md">
+      <tr>
+        <td>
+          <h1 class='large-text'>It's here!</h1>
+        </td>
+      </tr>
+    </table>
+
+    <table class="announcement-container-md">
+      <tr>
+        <td width='70'>
+          <%= post_image_tag @post, size: 52 %>
+        </td>
+        <td>
+          <span class='body-text'>
+            <%= link_to @post.name, post_url(@post, @tracking_params) %>
+          </span>
+          <br>
+          <span class='body-text'>
+            <%= @post.tagline %>
+          </span>
+        </td>
+      </tr>
+    </table>
+
+    <table class="announcement-container-md">
+      <tr>
+        <td>
+          <p class='body-text'>
+            You're among the first to know that <%= link_to @post.name, post_url(@post, @tracking_params), target: '_blank' %> is live.
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p class='body-text'>
+            Now it's time to show your support! The best ways to do so are by leaving feedback, sharing the post with your friends, and dropping an upvote if you like what you see.
+          </p>
+        </td>
+      </tr>
+    </table>
+
+    <%= transactional_cta 'View launch', post_url(@post, @tracking_params), center: true %>
+
+    <br />
+  </div>
+
+  <%= render 'mailer/social_footer_links_v2', tracking_params: @tracking_params %>
+<% end %>

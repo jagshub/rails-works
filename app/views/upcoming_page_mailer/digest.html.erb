@@ -1,0 +1,99 @@
+<div class="notification upcoming-page-message upcoming-page-weekly-stats">
+  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+      <td>
+        <%= render 'mailer/logo' %>
+        <br />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div>
+          <h2 class="section-title">You have <strong><%= number_with_delimiter(@total_subscribers_count) %></strong> new <%= 'subscriber'.pluralize(@total_subscribers_count) %></h2>
+
+          <% if @top_subscribers.count > 0 %>
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" class="upcoming-page-subscribers">
+              <% @top_subscribers.each do |subscriber| %>
+                <tr class="upcoming-subscriber">
+                  <td class="user">
+                    <%= user_image subscriber.user, size: 30 %>
+                  </td>
+                  <td class="upcoming-subscriber-name">
+                    <%= link_to subscriber.user.name, Routes.my_ship_contact_url(subscriber.ship_contact_id) %>
+
+                  </td>
+                  <td class="upcoming-subscriber-headline">
+                    <%= subscriber.user.headline %>
+                  </td>
+                  <td class="upcoming-subscriber-followers">
+                    <%= number_with_delimiter(subscriber.user.follower_count) %> followers
+                  </td>
+                  <td>
+                    <%= link_to s3_image_tag('upcoming-digest-message-icon.png', width: 15, height: 15), Routes.my_upcoming_new_message_url(@upcoming_page, subscriber) %>
+                  </td>
+                </tr>
+              <% end %>
+            </table>
+
+            <% if @rest_subscriber_count.positive? %>
+              <div class="notification-action-button">
+                <%= link_to 'See all new subscribers', my_upcoming_page_subscribers_url(@upcoming_page) %>
+              </div>
+            <% end %>
+          <% end %>
+
+          <% if @maker_tasks.count.positive? %>
+            <h2 class="section-title">You have <%= @maker_tasks.count %> remaining <%= 'task'.pluralize(@maker_tasks.count) %></h2>
+
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" class="upcoming-page-subscribers">
+              <% @maker_tasks.each do |maker_task| %>
+                <tr class="upcoming-subscriber">
+                  <td>
+                    <%= s3_image_tag 'upcoming-digest-todo-icon.png', width: 15, height: 15 %>
+                  </td>
+
+                  <td class="maker-task-title">
+                    <%= link_to maker_task.title, maker_task.url %>
+                  </td>
+
+                  <td class="maker-task-description">
+                    <%= maker_task.description %>
+                  </td>
+                </tr>
+              <% end %>
+            </table>
+            <br>
+            <br>
+          <% end %>
+
+          <% if @user.ship_subscription&.free? %>
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" class="upcoming-promo">
+              <tr>
+                <td>
+                  <strong>Reach more subscribers before you launch</strong>
+                  <br>
+                  <br>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <%= link_to 'Learn more about the Ship ⛵ pro features', Routes.ship_url %>
+                </td>
+              </tr>
+            </table>
+            <br>
+            <br>
+          <% end %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="footer">
+      <p><% @unsubscribe_url %>
+        <p>Have questions, feedback or problems? Check out our <%= link_to 'Help Center', 'https://help.producthunt.com/en/' %> or reach out to us at <%= link_to 'support@producthunt.com', 'support@producthunt.com' %>. You can also opt out of <%= link_to 'Ship notifications', @unsubscribe_url %>.</p>
+        <br>
+        <p><%= contact_address %></p>
+      </td>
+    </tr>
+  </table>
+</div>

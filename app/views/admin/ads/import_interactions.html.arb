@@ -1,0 +1,39 @@
+# frozen_string_literal: true
+
+div do
+  active_admin_form_for import, as: :import, url: import_interactions_admin_channels_path do |form|
+    form.semantic_errors *form.object.errors.attribute_names
+
+    form.inputs 'Details' do
+      li class: 'input' do
+        strong "IMPORTANT: This import will affect billing for customers, please
+          do not use unless you understand what's going on here. This action
+          uses upsert on track_code + user_id columns. Example SQL:"
+
+        code class: 'codeblock' do
+          <<-SQL
+            select
+              subject_id as channel_id,
+              'impression' as kind,
+              anonymous_id as track_code,
+              user_id,
+              context_ip as ip_address,
+              context_user_agent as user_agent,
+              reference,
+              received_at as created_at
+            from producthunt_production.viewable_impressions
+            where [received_at:day] between '2021-03-31' and '2021-04-06'
+            and subject_type = 'AdChannel'
+          SQL
+        end
+      end
+
+      hint = "Column structure: #{ Ads::Admin::ImportInteractionsForm::HEADERS.join(', ') }"
+      form.input :csv, as: :file, label: 'CSV file', hint: hint.html_safe
+    end
+    form.actions do
+      form.action :submit, button_html: { 'data-disable-with' => 'Uploading...', value: 'Import' }
+      form.cancel_link
+    end
+  end
+end

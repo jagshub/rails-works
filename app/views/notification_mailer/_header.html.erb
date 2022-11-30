@@ -1,0 +1,21 @@
+<tr>
+  <td>
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+        <% if @from_user.present? %>
+          <td class="user" valign="top" width="30px">
+            <%= user_image @from_user, size: 30 %>
+          </td>
+        <% end %>
+
+        <td class="notification-header">
+          Hey there, <b><%= @user.first_name %></b>!<br />
+          <%= subject %>
+        </td>
+        <td valign="top" width="30px">
+          <%= link_to_logo @tracking_params, size: 30 %>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <%= stylesheet_link_tag "shareable/base", media: "all" %>
+      <%= stylesheet_link_tag 'shareable/post_launch' %>
+   </head>
+   <body>
+      <main>
+         <div class="header">
+            <img
+               class="logo-top-left"
+               src="<%= @post.thumbnail_url(width: 80, height: 80) %>"
+               />
+            <div class="title"><%= @post.name %> </div>
+            <div class="tagline"> <%= @post.tagline %> </div>
+         </div>
+         <div class="chartWrap">
+            <div id="chart"></div>
+         </div>
+         <div class="container">
+            <div class="row">
+               <div class="col">
+                  <div class="metricNum"><%= @post.daily_rank ? "##{ @post.daily_rank }" : '-' %></div>
+                  <div class="metricText">
+                   <div class="icon"> <%= image_tag 'Position.svg' %> </div>
+                  Position</div>
+               </div>
+               <div class="col">
+                  <div class="metricNum"><%= @post.votes_count %></div>
+                  <div class="metricText"> <div class="icon"> <%= image_tag 'Upvote.svg' %> </div> Upvotes</div>
+               </div>
+               <div class="col">
+                  <div class="metricNum"><%= @post.comments_count %></div>
+                  <div class="metricText"> <div class="icon"> <%= image_tag 'Comment.svg' %> </div> Comments </div>
+               </div>
+            </div>
+         </div>
+         <div class="signatureContainer">
+            <div class="launchedOnText">
+               Launched on
+            </div>
+            <div class="phImage"> <%= image_tag 'Logo.svg' %> </div>
+            <div class="phText"> Product Hunt </div>
+         </div>
+      </main>
+      <%= javascript_include_tag 'highcharts' %>
+      <script type="text/javascript">
+         function chartOptions(data) {
+             return {
+                credits: {
+                  enabled: false
+                },
+                chart: {
+                  marginLeft: 50,
+                },
+                title: {
+                  style: {
+                    display: 'none',
+                  },
+                },
+                yAxis: {
+                  min: 0,
+                  gridLineWidth: 1,
+                  title: {
+                    style: {
+                      display: 'none',
+                    },
+                  },
+                },
+                xAxis: {
+                  type: 'datetime',
+                  gridLineWidth: 1,
+                  title: {
+                    style: {
+                      display: 'none',
+                    },
+                  },
+                },
+                legend: {
+                  enabled: false,
+                },
+                series: [
+                  {
+                    name: 'Upvotes',
+                    data,
+                    type: 'area',
+                    marker: {
+                      enabled: false,
+                    },
+                    lineWidth: 0,
+                    fillColor: {
+                      linearGradient: {
+                        x1: 0,
+                        y1: 0,
+                        x2: 0,
+                        y2: 1,
+                      },
+                      stops: [
+                        [0, 'rgba(47, 126, 216, 0.7)'],
+                        [1, 'rgba(47, 126, 216, 0.2)'],
+                      ],
+                    },
+                  },
+                ],
+              }
+         }
+
+         document.addEventListener('DOMContentLoaded', function () {
+           var data = JSON.parse("<%= escape_javascript(render(inline: @chart_data.to_json)) %>")
+           let psum = 0;
+           const chartData = data.map((datum) => {
+             psum += datum.value;
+             return [datum.timestamp, psum];
+           });
+
+           Highcharts.chart('chart', chartOptions(chartData));
+         });
+      </script>
+   </body>
+</html>

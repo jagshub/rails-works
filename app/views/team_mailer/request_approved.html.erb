@@ -1,0 +1,26 @@
+
+<%= transactional_layout_v2 do %>
+  <div class='transactional-v2-layout-main'>
+    <%= render partial: 'header', locals: { text: "Your #{@is_owner ? 'claim' : 'request'} has been approved" } %>
+    <%= render partial: 'product_card' %>
+
+    <%= render layout: 'content' do %>
+      <% if @is_owner %>
+        <p class='body-text'>Your verification process is complete and you’re now an owner of <%= product_link(@product) %>.</p>
+      <% else %>
+        <p class='body-text'>Your request to join <%= product_link(@product) %> has been approved.</p>
+      <% end %>
+      <p class='body-text'>
+        As <%= @is_owner ? 'an owner' : 'a team member' %>, you can:
+        <ul>
+          <li class='body-text'><%= @is_owner ? 'Manage users and permissions' : 'Manage team users' %></li>
+          <li class='body-text'>Tease scheduled launches</li>
+          <li class='body-text'>Edit your hub information</li>
+        </ul>
+      </p>
+    <% end %>
+    <%= render partial: 'cta', locals: { text: "Open Hub settings", url: product_team_url(@product) } %>
+  </div>
+
+  <%= render partial: 'footer', locals: { text: "you requested access to a hub" } %>
+<% end %>

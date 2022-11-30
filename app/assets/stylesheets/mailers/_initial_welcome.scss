@@ -1,0 +1,30 @@
+.listicle-story {
+  margin: 15px auto;
+  width: 512px;
+  border-collapse: separate !important;
+  border-spacing: 0 20px;
+
+  .story-item {
+    .story {
+      width: 141px;
+
+      div {
+        width: 108px;
+        height: 108px;
+        color: $grey;
+        font-size: 36px;
+        letter-spacing: 0;
+        line-height: 47px;
+        text-align: center;
+        border-radius: 6px;
+      }
+    }
+
+    .description {
+      color: $darker-grey;
+      font-size: 14px;
+      letter-spacing: 0;
+      line-height: 24px;
+    }
+  }
+}

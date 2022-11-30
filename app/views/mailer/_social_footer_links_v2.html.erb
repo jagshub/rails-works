@@ -1,0 +1,28 @@
+<table style='width: 510px; margin:auto; margin-top: 54px;'>
+  <tr>
+    <td>
+      <p class='body-text text-dark-grey text-center'>
+        Tell us how we're doing.
+      </p>
+      <p class='body-text text-dark-grey text-center' style='padding-top: 8px'>
+        We're working on improving Product Hunt every day and we want to hear from you. What do you love? How could we do better? All feedback is helpful.
+      </p>
+      
+      <div class='text-center feedback-container'>
+        <%= link_to 'Speak your mind', nps_url(@subscriber, user: @user), class: 'feedback-btn'%>
+      </div>
+
+      <div class='sm-text text-center feedback-container'>
+        Occasionally, you may receive notifications when we spot something that may interest you. You can <%= link_to 'manage', my_settings_url(@tracking_params), class: 'transactional-v2-dark-link' %> which email notifications you receive.
+        <% if @unsubscribe_url %>
+         You can also <%= link_to 'opt out', @unsubscribe_url %> of marketing emails (events, tips, giveaways) from Product Hunt.
+        <% end %>
+        <br/>
+        Follow us: <%= link_to 'Twitter', social_twitter_url, class: 'transactional-v2-dark-link' -%>&nbsp;<%= link_to 'Facebook', social_facebook_url, class: 'transactional-v2-dark-link' -%>
+        <br/>
+        <%= link_to 'Advertise', advertising_url(@tracking_params), class: 'transactional-v2-hidden-dark-link' -%>,&nbsp;
+        <%= link_to 'Stories', stories_url, class: 'transactional-v2-hidden-dark-link' -%>
+      </div>
+    </td>
+  <tr>
+</table>

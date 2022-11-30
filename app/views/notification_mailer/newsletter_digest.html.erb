@@ -1,0 +1,13 @@
+<div class="newsletter-main">
+  <%= mobile_preview_tag @mobile_preview -%>
+
+  <%= render partial: 'newsletter_header'-%>
+  <%= render partial: 'newsletter_first_time_welcome' if @first_time -%>
+
+  <% @content.sections.sort.each do |section| %>
+    <%= render partial: section.partial, locals: { section: section }%>
+  <% end %>
+
+  <%= render partial: 'newsletter_nps' -%>
+  <%= render partial: 'newsletter_footer' -%>
+</div>

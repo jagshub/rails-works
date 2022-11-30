@@ -1,0 +1,15 @@
+<%= transactional_layout do %>
+  <%= transactional_box do %>
+    <p>Hey there 👋</p><br/>
+    <p>
+      After weeks of hard work the Makers Festival showcase is <a href="https://www.producthunt.com/makers-festival/product-hunt-api-2-0/voting" target="_blank">now live!</a> We have been blown away by the sheer creativity of products built with our API and we are actively testing them all.
+    </p><br />
+    <p>
+      Don’t forget to post your product to the website as well in order to showcase it to the wider community! You can do so <a href="https://producthunt.com/posts/new" target="_blank">here</a>
+    </p><br/>
+    <p>
+      If you need any help, you can reach us at <a href="mailto:hello@producthunt.com">hello@producthunt.com</a>
+    </p><br/>
+    <%= transactional_salutation salute: 'Happy making', from: 'Team Product Hunt' %>
+  <% end %>
+<% end %>

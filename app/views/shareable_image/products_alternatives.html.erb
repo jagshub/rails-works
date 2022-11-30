@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <%= stylesheet_link_tag "shareable/base", media: "all" %>
+  <%= stylesheet_link_tag "shareable/products_alternatives", media: "all" %>
+</head>
+
+<body>
+  <div class="card flexable column gradient-4">
+    <img class="bg-image" src="https://ph-static.imgix.net/alternatives.svg?auto=compress&format=auto" />
+    <div class="inner-card flexable column">
+      <div class="user flexable row align-center">
+        <img
+          class="thumbnail"
+          src="<%= @product.thumbnail_url(width: 144, height: 144) %>"
+        />
+        <div class="title">Alternatives to <br /><%= @product.name -%></div>
+      </div>
+    </div>
+    <div class="sub-inner-card-text sub-text white">
+      Discover your next favorite thing on Product Hunt
+    </div>
+    <img
+      class="logo-lower-right"
+      src="<%= S3Helper.url('static/glasshole_kitty_logo.png') %>"
+    />
+  </div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<%= transactional_layout do %>
+  <%= transactional_box do %>
+    <div class="founder-club">
+      <div class="founder-club-emoji">🎉</div>
+      <h2>Your Invite Code for Founder Club</h2>
+      <% if @access_request.referral? %>
+        <p>
+          Congratulations, <%= @access_request.invited_by_user.name %> invited you to Founder Club! Simply visit <%= link_to 'founder.club', founder_club_url %> and copy your unique code below
+        </p>
+      <% else %>
+        <p>
+          Congratulations, you’re in! Simply visit <%= link_to 'founder.club', founder_club_url %> and copy your unique code below
+        </p>
+      <% end %>
+      <div class="founder-club-code">
+        Your unique code: <strong><%= @access_request.invite_code %></strong>
+      </div>
+      <%= transactional_cta 'Join Founder Club', founder_club_url %>
+    </div>
+  <% end %>
+<% end %>

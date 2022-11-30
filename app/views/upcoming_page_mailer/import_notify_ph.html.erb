@@ -1,0 +1,9 @@
+<%= transactional_layout do %>
+  <%= transactional_box do %>
+    <p>
+      A Ship subscriber has imported a large email list that needs review.<br />
+      You can review the list, and either approve or reject it here:
+    </p>
+    <%= transactional_cta "Review import", admin_upcoming_page_email_import_url(@email_import) %>
+  <% end %>
+<% end %>

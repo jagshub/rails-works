@@ -1,0 +1,24 @@
+<table class="newsletter-nps">
+  <tr>
+    <td>
+      <%= link_to nps_url(@subscriber, user: @user), target: '_blank', class: 'nps-title' do %>
+        Tell us how we're doing
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= link_to nps_url(@subscriber, user: @user), target: '_blank', class: 'nps-description' do %>
+        We're working on improving Product Hunt every day and we want to hear from you.
+        What do you love? How could we do better? All feedback is helpful.
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <%= link_to nps_url(@subscriber, user: @user), target: '_blank', class: 'nps-cta' do %>
+        Speak your mind
+      <% end %>
+    </td>
+  </tr>
+</table>

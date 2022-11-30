@@ -1,0 +1,12 @@
+<%= transactional_box title: "Canceled - Subscription to Founder Club" do %>
+  <p>
+    Hi <%= user.friendly_name %>
+  </p>
+  <p>
+    Your subscription to Founder Club has now been cancelled with your subscription remaining active until the end of your current billing period. As much as it hurts to see you go, we hope that the access to partners while you were a member will continue to help you and your business grow.
+  </p>
+  <p>
+    We’d also love to know what we could’ve done better to improve your experience. Feel free to reply and drop us a few lines - all feedback is appreciated!
+  </p>
+  <%= transactional_salutation salute: 'Best', from: 'Team Product Hunt' %>
+<% end %>

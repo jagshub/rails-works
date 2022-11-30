@@ -1,0 +1,15 @@
+# frozen_string_literal: true
+
+div do
+  active_admin_form_for @import || import, as: :import, url: import_admin_topics_path do |form|
+    form.semantic_errors *form.object.errors.attribute_names
+    form.inputs 'Details' do
+      hint = "Expected csv columns: #{ [Admin::Topics::ImportCSV::TOPIC_HEADER, Admin::Topics::ImportCSV::ALIASES_HEADER, Admin::Topics::ImportCSV::DESCRIPTION_HEADER].join(', ') }"
+      form.input :csv, as: :file, label: 'CSV file', hint: hint.html_safe
+    end
+    form.actions do
+      form.action :submit, button_html: { 'data-disable-with' => 'Uploading...', value: 'Import' }
+      form.cancel_link
+    end
+  end
+end

@@ -1,0 +1,122 @@
+.maker-report-header-title {
+  margin-top: 32px !important;
+}
+
+.maker-report-summary {
+  margin-top: $spacing-normal !important;
+}
+
+.maker-report-subject-link {
+  font-weight: $font-weight-semi-bold;
+  color: $darker-grey !important;
+  font-weight: $font-weight-semi-bold;
+  font-size: 14px;
+  line-height: $line-height-large;
+}
+
+.maker-report-subject-tagline {
+  color: $lighter-grey;
+  font-size: 14px;
+  line-height: $line-height-large;
+}
+
+.maker-report-metrics {
+  margin: 32px auto 47px !important;
+}
+
+.maker-report-header-metric {
+  font-size: 14px;
+  color: $lighter-grey !important;
+  line-height: $line-height-small;
+}
+
+.maker-report-header-metric-number {
+  font-size: 18px;
+  color: $darker-grey !important;
+  font-weight: $font-weight-semi-bold;
+  line-height: $line-height-large;
+}
+
+.maker-report-section {
+  margin-top: 32px !important;
+
+  .cta-container {
+    margin: 32px auto 32px;
+  }
+}
+
+.description-title {
+  display: inline-block;
+  font-size: 18px;
+  font-weight: $font-weight-semi-bold;
+  line-height: $line-height-large;
+  margin-bottom: 8px;
+}
+
+.maker-report-activity-title {
+  padding-top: 32px;
+}
+
+.maker-report-activity-user-name {
+  font-size: 14px;
+  font-weight: $font-weight-semi-bold;
+  color: $darker-grey !important;
+}
+
+.maker-report-activity-user-headline {
+  margin-left: 12px;
+  font-size: 12px;
+  color: $lighter-grey;
+}
+
+.maker-report-reply {
+  color: $v7-coral !important;
+  font-weight: $font-weight-semi-bold;
+}
+
+.maker-report-activity-subText {
+  padding-top: 12px;
+}
+
+.maker-report-activity-body {
+  font-size: 14px;
+}
+
+.maker-report-post-thumbnail {
+  img {
+    border-radius: $v6-radius;
+  }
+}
+
+.maker-report-review-sentiment {
+  font-size: 12px;
+  color: $lighter-grey;
+}
+
+.maker-report-review-sentiment-negative {
+  color: #f95353;
+}
+
+.maker-report-review-sentiment-neutral {
+  color: $lighter-grey;
+}
+
+.maker-report-review-sentiment-positive {
+  color: #66be00;
+}
+
+.footer {
+  width: 510px;
+  margin:auto;
+  margin-top: 54px;
+
+  .description {
+    color: $lighter-grey;
+    font-size: 12px;
+
+    a {
+      color: $lighter-grey !important;
+      text-decoration: underline;
+    }
+  }
+}

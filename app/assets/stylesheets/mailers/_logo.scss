@@ -1,0 +1,25 @@
+.logo {
+  color: inherit;
+  display: block;
+  text-decoration: none;
+}
+
+.logo--ph {
+  display: block;
+  min-width: 135px;
+}
+
+.logo--image {
+  height: 33px;
+  width: 33px;
+}
+
+.logo--name {
+  color: $v7-coral;
+  font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 33px;
+  margin-left: 5px;
+  vertical-align: top;
+}

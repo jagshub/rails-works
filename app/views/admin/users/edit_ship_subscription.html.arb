@@ -1,0 +1,16 @@
+# frozen_string_literal: true
+
+div do
+  active_admin_form_for user, url: update_ship_subscription_admin_user_path(resource) do |form|
+    form.semantic_errors *form.object.errors.attribute_names
+
+    form.inputs 'Details' do
+      form.input :username, label: 'Username', input_html: { value: '' }, hint: 'Enter the username of the user who you want to transfer the ship subscription to'
+    end
+
+    form.actions do
+      form.action :submit, button_html: { 'data-disable-with' => 'Saving...', value: 'Transfer' }
+      form.cancel_link
+    end
+  end
+end

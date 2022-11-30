@@ -1,0 +1,50 @@
+<%= transactional_layout_v2 do %>
+  <%= mobile_preview_tag @mobile_preview_tag %>
+
+  <table border="0" cellpadding="0" cellspacing="0" width="100%" class="gk-header">
+    <tr>
+      <td>
+        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="padding: 40px 5px">
+          <tr>
+            <td>
+              <%= render 'mailer/logo' %>
+            </td>
+            <td class="transactional-date text-light-grey">
+              <%= Time.zone.now.strftime("%A, %B #{Time.zone.now.day.ordinalize}") %>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="gk-layout-main text-dark-grey">
+          <div class="gk-intro">
+            <% if phase_image.nil? %>
+              <%= s3_image_tag "static/golden-kitty/2021/mailer_default.png", alt: "Golden Kitty 2021 Awards", class: "gk-image" %>
+            <% else %>
+              <%= s3_image_tag "static/golden-kitty/2021/#{phase_image}.png", alt: "Golden Kitty 2021 Awards #{phase_image}", class: "gk-image" %>
+            <% end %>
+          </div>
+
+          <div class="gk-content">
+            <%= yield %>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class='sm-text text-center text-light-grey gk-footer'>
+          <p>Feel free to <%= link_to 'turn off', @unsubscribe_url %> these emails at any time. If you have any questions, feedback, ideas or problems don't hesitate to contact us!</p>
+          <p><%= contact_address %></p>
+
+          <%= link_to 'Twitter', social_twitter_url, class: 'secondary-link' %>,&nbsp;
+          <%= link_to 'Facebook', social_facebook_url, class: 'secondary-link' %>,&nbsp;
+          <%= link_to 'Advertise', advertising_url(@tracking_params), class: 'secondary-link' %>,&nbsp;
+          <%= link_to 'Stories', stories_url, class: 'secondary-link' %>
+        </div>
+      </td>
+    </tr>
+  </table>
+<% end %>

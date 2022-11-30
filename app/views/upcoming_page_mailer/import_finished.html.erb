@@ -1,0 +1,12 @@
+<%= transactional_layout do %>
+  <%= transactional_box do %>
+    <p>Hello, <%= @user.friendly_name %>!</p>
+    <p>The subscriber import for "<%= @upcoming_page.name %>" that you have requested has finished.</p>
+    <ul>
+      <li>Imported subscribers: <%= @success_count %></li>
+      <li>Duplicate subscribers: <%= @duplicate_count %></li>
+      <li>Failed imports: <%= @failed_count %></li>
+    </ul>
+    <%= transactional_cta 'Send message to imported subscribers', new_my_upcoming_page_message_url(@upcoming_page, @tracking_params.merge(segmentId:  %w(imported not_messaged))), center: true %>
+  <% end %>
+<% end %>

@@ -1,0 +1,15 @@
+<%= stylesheet_link_tag "api", media: "all" %>
+<%= jquery_javascript_tag %>
+
+<div class="container">
+  <h1 class="s-h1 m-centered">My Applications</h1>
+  <p class="s-p">
+    Did you know Product Hunt has an API? Several awesome folks have used it to <a href="http://www.producthunt.com/e/made-by-product-hunters">build things</a> and you can too. Take a look at the <a href="https://api.producthunt.com/v2/docs">API docs</a> and to get started, add your first application:
+  </p>
+
+  <p>
+    <%= link_to 'Add an application', new_api_v2_oauth_application_path, class: 'button' %>
+  </p>
+
+  <%= render(partial: 'application', collection: @applications) %>
+</div>

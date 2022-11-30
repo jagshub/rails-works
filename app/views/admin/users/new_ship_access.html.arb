@@ -1,0 +1,16 @@
+# frozen_string_literal: true
+
+div do
+  active_admin_form_for ShipSubscription.new, url: grant_ship_access_admin_user_path(resource) do |form|
+    form.semantic_errors *form.object.errors.attribute_names
+
+    form.inputs 'Details' do
+      form.input :billing_plan, include_blank: false
+    end
+
+    form.actions do
+      form.action :submit, button_html: { 'data-disable-with' => 'Saving...', value: 'Save' }
+      form.cancel_link
+    end
+  end
+end

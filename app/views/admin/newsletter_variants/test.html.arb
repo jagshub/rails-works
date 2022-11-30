@@ -1,0 +1,14 @@
+# frozen_string_literal: true
+
+div do
+  active_admin_form_for User.new, url: test_send_admin_newsletter_variant_path(resource) do |form|
+    form.semantic_errors *form.object.errors.attribute_names
+    form.inputs 'User' do
+      form.input :email, hint: 'This email receives a test version of the newsletter.'
+    end
+    form.actions do
+      form.action :submit, button_html: { 'data-disable-with' => 'Sending...', value: 'Send' }
+      form.cancel_link
+    end
+  end
+end

@@ -1,0 +1,26 @@
+<% newsletter.sections.sort.each_with_index do |section, i| %>
+  <%= hidden_field_tag("newsletter_variant[sections][#{ i }][layout]", section.layout) %>
+
+  <fieldset class="inputs">
+    <legend>
+      <span><%= section.layout.humanize %></span>
+    </legend>
+    <ol>
+      <li>
+        <%= label_tag("upload_#{ i }", 'Image') %>
+        <%= inline_file_upload(id: "upload_#{ i }", name: "newsletter_variant[sections][#{ i }][image_uuid]", value: section.image_uuid) %>
+      </li>
+      <% if section.primary_featured? %>
+        <li><%= label_tag("newsletter_variant_sections_#{ i }_title", 'Button text') + text_field_tag("newsletter_variant[sections][#{ i }][title]", section.title, id: "newsletter_variant_sections_#{ i }_title") %></li>
+      <% end %>
+      <li>
+        <%= label_tag("newsletter_variant_sections_#{ i }_url", section.primary_featured? ? 'Button link' : 'Image link') %>
+        <%= text_field_tag("newsletter_variant[sections][#{ i }][url]", section.url, id: "newsletter_variant_sections_#{ i }_url") %>
+      </li>
+      <li>
+        <%= label_tag("newsletter_variant_sections_#{ i }_content", 'Content') %>
+        <%= text_area_tag("newsletter_variant[sections][#{ i }][content]", section.content, id: "newsletter_variant_sections_#{ i }_content") %>
+      </li>
+    </ol>
+  </fieldset>
+<% end %>

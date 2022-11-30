@@ -1,0 +1,52 @@
+<%= transactional_layout do %>
+  <%= transactional_box do %>
+    <p>Hey there, <%= content_tag :b, @user.name, class: 'font-semi-bold' %>!</p>
+
+    <p>
+      <%= content_tag :b, @thread.user.name, class: 'font-semi-bold' %> just started a new discussion
+    </p>
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="transactional-box-separator">
+    </table>
+
+    <br />
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+        <td width="35">
+          <%= link_to_user @thread.user, @tracking_params, size: 30 %>
+        </td>
+
+        <td class='font-small'>
+          <%= link_to(profile_url(@thread.user), @tracking_params) do %>
+            <%= content_tag :b, @thread.user.name, class: 'font-semi-bold font-black' %>
+            <%= content_tag :span, @thread.user.headline, class: 'font-light font-grey' %>
+          <% end %>
+        </td>
+      </tr>
+    </table>
+
+    <%= link_to(discussion_url @thread, @tracking_params) do %>
+      <h1 class="font-large font-black"><%= @thread.title %></h1>
+      <div class="font-black font-small"><%=raw strip_tags(@thread.description).to_s.gsub("\n", '<br />') %></div>
+    <% end %>
+
+    <tr>
+      <td height="20"></td>
+    </tr>
+
+    <tr>
+      <td align="center" height="35">
+        <%= button_to "Reply to #{@thread.user.name}", discussion_url(@thread) %>
+      </td>
+    </tr>
+
+    <tr>
+      <td height="30"></td>
+    </tr>
+
+    <% content_for :footnote do %>
+      <p>You can <%= link_to 'opt out', @unsubscribe_url %> of mention notifications or manage all of your email notifications from <%= link_to 'your profile', my_settings_url %>. Or just <%= link_to "unfollow #{ @thread.user.name }", @unfollow_url %></p>
+    <% end %>
+  <% end %>
+<% end %>

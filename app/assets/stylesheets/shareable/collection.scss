@@ -1,0 +1,24 @@
+.inner-card {
+  div + div {
+    margin-top: 15px;
+  }
+
+  .circle {
+    margin-right: 20px;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .inner-card {
+    min-height: 100%;
+
+    div + div {
+      margin-left: 2%;
+    }
+  }
+
+  .circle {
+    width: unset;
+    margin-left: 2%;
+  }
+}

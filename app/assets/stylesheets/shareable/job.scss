@@ -1,0 +1,35 @@
+.job-inner-card {
+  padding: 140px 135px 35px 135px;
+  position: relative;
+
+  div + div {
+    margin-top: 20px;
+  }
+}
+
+.company-logo {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-65px);
+  background-color: white;
+  border-radius: 10px;
+  object-fit: none;
+}
+
+@media screen and (max-width: 540px) {
+  .job-inner-card {
+    padding: 5%;
+
+    div {
+      margin-top: 15%;
+    }
+  }
+
+  .company-logo {
+    top: -16px;
+    left: 51%;
+    width: 23%;
+    height: 38%;
+  }
+}

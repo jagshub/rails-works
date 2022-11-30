@@ -1,0 +1,13 @@
+Hey there, <%= @user.first_name  %>!
+
+You have a new follower on Product Hunt - <%= @follower.name %>, <%= @follower.headline %>.
+
+<%= Routes.profile_url(@follower) %>
+
+<% if @fun_fact.present? %>
+Fun fact about <%= @follower.first_name %> - <%= strip_links @fun_fact  %>.
+<% end %>
+
+------------------------------------
+
+You can [opt out](<%= @unsubscribe_url %>) of new follower notifications or manage all of your email notifications from [your profile](<%= Routes.my_settings_url %>).

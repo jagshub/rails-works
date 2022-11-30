@@ -1,0 +1,58 @@
+<%= transactional_layout do %>
+  <%= transactional_box do %>
+  <p></p>
+  <p>
+    Hi, <%= @user.first_name %>
+  </p>
+
+  <p>
+    The community really loved <%= link_to @post.name, post_url(@post, @tracking_params) -%> and
+    wants to know what you're releasing next. Let's celebrate the next big
+    feature — we'll invite <%= link_to @product.name, product_url(@product, @tracking_params) -%>
+    followers to the next launch 🥳.
+  </p>
+
+  <p>
+    You can build on those results from last time too. 🏗 In your last launch
+    for <%= link_to @product.name, product_url(@product, @tracking_params) -%>, you earned:
+
+    <ul>
+      <li>
+        <%= pluralize @post.comments_count, 'comments' -%>
+      </li>
+      <li>
+        <%= pluralize @post.votes_count, 'upvotes' -%>
+      </li>
+      <li>
+        Rank <%= @post.daily_rank -%> on
+        <%= @post.featured_at.strftime("%B %d, %Y") -%>!
+      </li>
+    </ul>
+  </p>
+
+  <p>
+    Check out the <%= link_to 'Product Hunt Launch Guide', launch_guide_url(@tracking_params) -%>
+    for the latest tips on how to maximize your big day. We can't wait to see
+    what you've been making!
+  </p>
+
+  <p>
+    <% link_to 'Create your next launch', new_post_submission_url(@tracking_params) -%>
+  </p>
+
+  <p>
+    The Product Hunt Team
+  </p>
+  <% end %>
+
+  <% content_for :footnote do %>
+    <p>
+      You can <%= link_to 'manage', edit_my_settings_url -%> which email
+      notifications you receive. You can also opt out of
+      <%= link_to 'Maker notifications', @unsubscribe_url -%>.
+    </p>
+  <% end %>
+<% end %>
+
+
+

@@ -1,0 +1,132 @@
+# frozen_string_literal: true
+
+active_admin_form_for(
+  product_form,
+  as: :associate_posts,
+  url: associate_posts_admin_product_path,
+  method: :post,
+) do |form|
+  form.semantic_errors(*form.object.errors.attribute_names)
+
+  form.inputs 'Search' do
+    form.input :posts,
+               label: 'Search by Name, Slug, or ID',
+               as: :selected_list,
+               url: search_posts_without_products_admin_posts_path,
+               fields: %i(query),
+               display_name: 'admin_search_display_name',
+               minimum_input_length: 1
+  end
+
+  form.inputs 'Suggestions' do
+    # NOTE(DZ): Arbre structure follows how formtastic renders checkboxes
+    base_id = 'associate_posts_suggested_post_ids'
+    li class: 'check_boxes input optional', id: base_id do
+      fieldset class: 'choices' do
+        legend class: 'label' do
+          "<label>With exact link #{ resource.website_url }</label>".html_safe
+        end
+        input(
+          :suggested_post_ids,
+          as: :hidden,
+          input_html: {
+            id: "#{ base_id }_none",
+            name: 'associate_posts[suggested_post_ids][]',
+          },
+        )
+
+        ol class: 'choices-group' do
+          possible_posts[:same_link].each do |post|
+            li class: 'choice' do
+              html = <<~HTML
+                <label for="#{ base_id }_#{ post.id }">
+                  <input
+                    type="checkbox"
+                    name="associate_posts[suggested_post_ids][]"
+                    id="#{ base_id }_#{ post.id }"
+                    value="#{ post.id }"
+                  >
+                  #{ link_to(
+                    "#{ post.name } (#{ post.id })",
+                    admin_post_path(post),
+                    target: '_blank', rel: 'noopener',
+                  ) }
+                </label>
+              HTML
+              html.html_safe
+            end
+          end
+        end
+      end
+
+      fieldset class: 'choices' do
+        legend class: 'label' do
+          "<label>Starting with #{ resource.website_url }</label>".html_safe
+        end
+        input(
+          :suggested_post_ids,
+          as: :hidden,
+          input_html: {
+            id: "#{ base_id }_none",
+            name: 'associate_posts[suggested_post_ids][]',
+          },
+        )
+
+        ol class: 'choices-group' do
+          possible_posts[:same_link_prefix].each do |post|
+            li class: 'choice' do
+              html = <<~HTML
+                <label for="#{ base_id }_#{ post.id }">
+                  <input
+                    type="checkbox"
+                    name="associate_posts[suggested_post_ids][]"
+                    id="#{ base_id }_#{ post.id }"
+                    value="#{ post.id }"
+                  >
+                  #{ link_to(
+                    "#{ post.name } (#{ post.id })",
+                    admin_post_path(post),
+                    target: '_blank', rel: 'noopener',
+                  ) }
+                </label>
+              HTML
+              html.html_safe
+            end
+          end
+        end
+      end
+    end
+
+    li class: 'check_boxes input optional', id: base_id do
+      fieldset class: 'choices' do
+        legend class: 'label' do
+          '<label>With similar name (Top 10, by votes)</label>'.html_safe
+        end
+        ol class: 'choices-group' do
+          possible_posts[:same_name].each do |post|
+            li class: 'choice' do
+              html = <<~HTML
+                <label for="#{ base_id }_#{ post.id }">
+                  <input
+                    type="checkbox"
+                    name="associate_posts[suggested_post_ids][]"
+                    id="#{ base_id }_#{ post.id }"
+                    value="#{ post.id }"
+                  >
+                  #{ link_to(
+                    "#{ post.name } (#{ post.id })",
+                    admin_post_path(post),
+                    target: '_blank', rel: 'noopener',
+                  ) }
+                </label>
+              HTML
+              html.html_safe
+            end
+          end
+        end
+      end
+    end
+  end
+
+  form.actions
+end

@@ -1,0 +1,217 @@
+@import 'variables';
+$layout-prefix: 'transactional-v2';
+
+.#{$layout-prefix}-container {
+  width: 100%;
+  height: 100%;
+  background-color: $cloud;
+  font-family: $font-family-system;
+  margin: 0;
+  padding: 0;
+}
+
+@mixin html-content {
+  color: $darker-grey;
+  font-size: 14px;
+  line-height: 24px;
+  /* NOTE(DZ): Do not use other white-space css. This is to support legacy
+   * newsletters that use <br /> to create line-breaks
+   */
+  white-space: normal;
+}
+
+.#{$layout-prefix}-layout-main {
+  margin: 0 auto;
+  max-width: 600px;
+  padding: $spacing-normal 8px;
+  font-size: 15px;
+  margin-top: 23px;
+  background: $white;
+
+  table {
+    width: 512px;
+    margin: 15px auto;
+    border-collapse: collapse;
+
+    td {
+      box-sizing: border-box;
+    }
+  }
+}
+
+.#{$layout-prefix}-main-header {
+  .actions {
+    text-align: right;
+
+    .goto-ph-btn {
+      height: 16px;
+      width: 140px;
+      color: $v7-coral;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 16px;
+      text-align: center;
+      vertical-align: middle;
+      padding: 10px 12px;
+      box-sizing: border-box;
+      height: 35px;
+      width: 164px;
+      border: 1px solid $silver;
+      border-radius: 4px;
+      background-color: $white;
+    }
+  }
+}
+
+a.#{$layout-prefix}-link {
+  text-decoration: none;
+  color: $blue !important;
+}
+
+a.#{$layout-prefix}-dark-link {
+  text-decoration: underline;
+  color: $darker-grey !important;
+}
+
+a.#{$layout-prefix}-hidden-dark-link {
+  text-decoration: none;
+  color: $darker-grey !important;
+}
+
+.listicle {
+  width: 512px;
+  margin: auto;
+
+  .list-item {
+    height: 80px;
+
+    .icon {
+      width: 49px;
+      color: $grey;
+      font-size: 36px;
+      letter-spacing: 0;
+      line-height: 47px;
+      text-align: center;
+      padding-top: 10px;
+
+      img {
+        width: 36px;
+      }
+      .embedIcon {
+        width: 28px;
+      }
+    }
+    .description {
+      color: $darker-grey;
+      font-size: 14px;
+      letter-spacing: 0;
+      line-height: 24px;
+      padding-left: 10px;
+    }
+  }
+}
+
+.#{$layout-prefix}-body-figure {
+  margin: 20px 0px;
+  width: 100%;
+
+  img {
+    width: 100%;
+  }
+}
+
+.footer-container {
+  margin-top: 35px;
+  
+  tr:nth-of-type(2) > td {
+    padding: 20px 0px;
+  }
+}
+
+.cta-container {
+  width: 512px;
+  border-radius: 8px;
+  background-color: $barely-orange;
+  text-align: center;
+  margin: auto;
+}
+
+.cta-link {
+  margin: auto;
+  line-height: 44px;
+}
+
+.large-text {
+  width: 510px;
+  color: $darker-grey;
+  font-size: 32px;
+  font-weight: 900;
+  letter-spacing: 0;
+  line-height: 40px;
+  margin: auto;
+}
+
+.bold-text {
+  color: $darker-grey;
+  width: 510px;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 24px;
+  margin: auto;
+}
+
+.body-text {
+  width: 510px;
+  color: $darker-grey;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 24px;
+  margin: auto;
+}
+
+.footer-text {
+  width: 510px;
+  color: $darker-grey;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 24px;
+  margin: auto;
+}
+
+.sm-text {
+  width: 510px;
+  color: $darker-grey;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 24px;
+  margin: auto;
+}
+
+.feedback-container {
+  width: 510px;
+  margin-top: 25px;
+}
+
+.feedback-btn {
+  text-align: center;
+  height: 40px;
+  width: 146px;
+  color: $lighter-grey !important;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 24px;
+  text-align: center;
+  border-radius: 4px;
+  background-color: $lighter-blue;
+  padding: 10px;
+}
+
+.inline-cta {
+  color: inherit !important;
+  text-decoration: inherit !important;
+  text-decoration: underline !important;
+  &:hover {
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,15 @@
+<%= transactional_layout do %>
+  <%= transactional_box do %>
+    <p>
+      Hi there!
+      <br/>
+      <em>You're receiving this email because you entered our Sweepstakes. (Good luck - we hope you win!)</em>
+    </p>
+
+    <p>You're the newest member of the Product Hunt community, the place to discover your next favorite thing.</p>
+
+    <p>You'll now be the first to know of the coolest new products in tech — whether it's Instagram adding a new feature, early access to a hot new <%= link_to 'email app', 'https://www.producthunt.com/posts/polymail-2' %>, or just a simple tool to <%= link_to 'impress', 'https://www.producthunt.com/posts/linkmoji' %> your friends. 😜</p>
+
+    <p>If you didn't want to enter the sweepstakes and have no interest in new products, tech news, or cat GIFs, no problem. You can always <%= link_to 'opt-out', @unsubscribe_url %>.</p>
+  <% end %>
+<% end %>

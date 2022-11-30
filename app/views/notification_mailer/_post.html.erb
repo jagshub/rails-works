@@ -1,0 +1,19 @@
+<tr>
+  <td class="notification-post">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+        <td rowspan="3" class="notification-thumbnail" width="75">
+          <%= post_image_tag post, size: 55 %>
+        </td>
+        <td>
+          <%= link_to post.name, post_url(post, @tracking_params), class: 'notification-post-name' %>
+        </td>
+      </tr>
+      <tr>
+        <td class="notification-post-tagline">
+          <%= post.tagline %>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>

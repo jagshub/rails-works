@@ -1,0 +1,46 @@
+<%= transactional_layout do %>
+  <%= transactional_box do %>
+    <p>
+      Hey there!
+    </p>
+
+    <p>
+      The links to <%= link_to @post.name, Routes.slug_post_url(@post) -%> seem
+      not to be working anymore.
+      <br />
+      If you'd like to update them, it's simple, you can
+      <%= link_to(
+        'edit your product here',
+        Routes.edit_post_submission_url(@post),
+        ) -%>.
+    </p>
+
+    <p>
+      Here are the links marked as broken in our system:
+      <ul>
+        <% @post.links.broken.each do |link| -%>
+          <li><%= link_to link.url, link.url -%></li>
+        <% end %>
+      </ul>
+    </p>
+
+
+    <p class="text-center">
+      <%= button_to(
+        "Update links for #{ @post.name }",
+        Routes.edit_post_submission_url(@post),
+        ) -%>
+    </p>
+
+    <p>
+      If <%= @post.name -%> was sunset, we can't wait to see what incredible
+      product you'll build and launch next 😺
+    </p>
+
+    <p>
+      Thank you,
+      <br />
+      The Product Hunt team
+    </p>
+  <% end %>
+<% end %>

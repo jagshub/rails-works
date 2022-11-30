@@ -1,0 +1,12 @@
+<%= transactional_layout do %>
+  <%= transactional_box do %>
+    <p>Hi, <%= @user.name %>!</p>
+    <p>
+      Congrats!
+      <%= link_to @discussion.title, discussions_url(@discussion) %>
+      has been approved and is now visible in our main discussion page.
+    </p>
+
+    <%= transactional_salutation salute: 'Thank you' %>
+  <% end %>
+<% end %>

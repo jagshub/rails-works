@@ -1,0 +1,94 @@
+/**
+ * Sizes
+ */
+
+.font-x-small {
+  font-size: 11px;
+  line-height: 16px;
+}
+
+.font-small {
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.font-medium {
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.font-large {
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.font-x-large {
+  font-size: 40px;
+  line-height: 48px;
+}
+
+/**
+ * Colors
+ */
+
+.font-grey {
+  color: $grey;
+
+  a {
+    color: $grey !important;
+    text-decoration: underline;
+  }
+}
+
+.font-black {
+  color: $black;
+
+  a {
+    color: $black !important;
+  }
+}
+
+.font-white {
+  color: $white;
+
+  a {
+    color: $white !important;
+    text-decoration: underline;
+  }
+}
+
+/**
+ * Weights
+ */
+
+.font-light {
+  font-weight: $font-weight-light;
+}
+
+.font-normal {
+  font-weight: $font-weight-regular;
+}
+
+.font-semi-bold {
+  font-weight: $font-weight-semi-bold;
+}
+
+.font-bold {
+  font-weight: $font-weight-bold;
+}
+
+/**
+ * Utils
+ */
+
+.font-format {
+  white-space: pre-line; /* NOTE(ayrton) preserve new lines */
+
+  a {
+    color: $v7-coral !important;
+  }
+}
+
+.font-uppercase {
+  text-transform: uppercase;
+}

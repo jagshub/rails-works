@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <%= stylesheet_link_tag "shareable/base", media: "all" %>
+  <%= stylesheet_link_tag "shareable/comment", media: "all" %>
+</head>
+
+<body>
+  <div class="card flexable column gradient-2">
+    <div class="inner-card flexable column">
+      <div class="user flexable row align-center">
+        <img
+          class="circle"
+          src="<%= Users::Avatar.url_for_user(@comment.user, size: 60) %>"
+        />
+        <div class="medium-text grey">
+          <%= @comment.user.name -%> on
+          <b class="black"><%= @comment.subject_name -%></b>
+        </div>
+      </div>
+      <div class="medium-text black clamp-text-3">
+        <%= @comment.body -%>
+      </div>
+    </div>
+    <div class="sub-inner-card-text white">
+      Join the discussion on Product Hunt
+    </div>
+    <img
+      class="logo-lower-right"
+      src="<%= S3Helper.url('static/glasshole_kitty_logo.png') %>"
+    />
+  </div>
+</body>
+</html>

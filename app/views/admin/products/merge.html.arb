@@ -1,0 +1,22 @@
+# frozen_string_literal: true
+
+div do
+  active_admin_form_for :merge, url: merge_admin_products_path do |form|
+    form.inputs 'Products' do
+      li class: 'input' do
+        strong 'The source product that will be destroyed'
+        form.input :source_id, label: 'Source Product ID'
+      end
+
+      li class: 'input' do
+        strong "The target product that will take the source's posts"
+        form.input :target_id, label: 'Target Product ID'
+      end
+    end
+
+    form.actions do
+      form.action :submit, button_html: { 'data-disable-with' => 'Uploading...', value: 'Merge' }
+      form.cancel_link
+    end
+  end
+end

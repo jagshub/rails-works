@@ -1,0 +1,16 @@
+# frozen_string_literal: true
+
+div do
+  active_admin_form_for ship_billing_information, url: promo_code_admin_user_path(resource) do |form|
+    form.semantic_errors *form.object.errors.attribute_names
+
+    form.inputs 'Details' do
+      form.input :ship_invite_code, label: 'Invite Code'
+    end
+
+    form.actions do
+      form.action :submit, button_html: { 'data-disable-with' => 'Saving...', value: 'Save' }
+      form.cancel_link
+    end
+  end
+end

@@ -1,0 +1,7 @@
+<%= transactional_layout do %>
+  <%= transactional_box do %>
+    <p>Redemption codes for Founder Club deal - <strong><%= @deal.title %></strong> have all been used.</p>
+
+    <%= transactional_cta "You can add more codes", edit_admin_founder_club_deal_url(@deal) %>
+  <% end %>
+<% end %>

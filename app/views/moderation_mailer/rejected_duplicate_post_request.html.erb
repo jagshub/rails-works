@@ -1,0 +1,14 @@
+<%= transactional_layout do %>
+  <%= transactional_box do %>
+    <p>Hi, <%= @user.first_name %></p>
+
+    <p>
+      After review, your request to post <%= link_to @post.name, Routes.post_url(@post), target: '_blank' %> less than six months after its previous launch was not approved. To give a chance to every product to get visibility, we only allow significant updates to be posted before the six-month mark.
+    </p>
+
+    <p>
+      Without significant changes, it’ll be possible to post <%= link_to @post.name, Routes.post_url(@post), target: '_blank' %> again on <%= @next_launch_date %> (six months after the last launch)
+    </p>
+    <%= transactional_salutation salute: 'Thank you', from: 'Product Hunt team' %>
+  <% end %>
+<% end %>

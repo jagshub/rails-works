@@ -1,0 +1,16 @@
+<%= transactional_box title: "Canceled - Subscription to Founder Club" do %>
+  <p>
+    Your Product Hunt subscription to Founder Club couldn't be charged due to payment error.
+  </p>
+  <p>
+    Don’t worry. We’ve kept your data safe.
+  </p>
+  <p>
+    Please, update your payment information today to reactivate your subscription.
+  </p>
+  <%= transactional_cta 'Reactivate your subscription', my_subscriptions_founder_club_url %>
+  <p>
+    Let me know if you have any questions.
+  </p>
+  <%= transactional_salutation salute: 'Many thanks', from: 'Lanre & Team Product Hunt' %>
+<% end %>

@@ -1,0 +1,30 @@
+<%= transactional_layout do %>
+  <%= transactional_box do %>
+    The Product Hunt community has spoken and <%= @post.name %> is the #<%= @daily_badge.data['position'] %> product of the day. Congrats on a successful launch! </br>
+    <br />
+    <br />
+    This is just one milestone, keep the momentum going! <br/>
+    <br />
+    <b>Embed your new award badge on your site.</b> Show new visitors that people love your product. Badges are easy to embed in your homepage or footer.</br>
+
+    <div class="preview-container">
+      <div class="badge-container">
+        <img src="<%=top_post_badge(@post, "light", "daily")%>" style="width: 250px; height: 54px;" width="250" height="54" /> <br/>
+      </div>
+      <button class="preview-button"><%= link_to 'Get the code', post_embed_url(@post, @tracking_params), target: '_blank', class: 'ph-cta' %> </button>
+    </div>
+
+    Collecting followers on your  <%= link_to 'Product Hub', product_url(@post, @tracking_params), target: '_blank', class: 'transactional-v2-link' %> now will set you up for your next launch. Plus more upvotes can propel you to product of the week, so start showing off your award on your website ASAP. 
+    <br />
+    <br />
+
+    If you’ve already done this, you’re ahead of the curve. For more post-launch tools, check out your <%= link_to 'launch embeds page', post_embed_url(@post, @tracking_params), target: '_blank', class: 'transactional-v2-link' %> for more ways to engage your audience.
+    <br />
+    <br />
+
+    <button class="preview-button"><%= link_to 'Maximize your launch', post_embed_url(@post, @tracking_params), target: '_blank', class: 'ph-cta' %> </button>
+  <% end %>
+  <%= content_for :footnote do %>
+    <p>You can <%= link_to 'opt out', @unsubscribe_url %> of friend product post notificaitons or manage all of your email notifications from <%= link_to 'your profile', Routes.my_settings_url %>.</p>
+  <% end %>
+<% end %>

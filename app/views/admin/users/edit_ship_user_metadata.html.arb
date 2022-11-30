@@ -1,0 +1,22 @@
+# frozen_string_literal: true
+
+if resource.ship_subscription.present? && resource.ship_subscription.premium? && resource.ship_subscription.active?
+  div do
+    p 'We are already charging this user. If you want to apply a new discount code, you have to do it in Stripe.'
+  end
+else
+  div do
+    active_admin_form_for ship_user_metadata, url: update_ship_user_metadata_admin_user_path(resource), method: :post do |form|
+      form.semantic_errors *form.object.errors.attribute_names
+
+      form.inputs 'Details' do
+        form.input :ship_instant_access_page, label: 'Instant Access Page'
+      end
+
+      form.actions do
+        form.action :submit, button_html: { 'data-disable-with' => 'Saving...', value: 'Save' }
+        form.cancel_link
+      end
+    end
+  end
+end

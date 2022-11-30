@@ -1,0 +1,52 @@
+# frozen_string_literal: true
+
+form do |f|
+  table do
+    tr do
+      th(width: 100) { f.label 'Basic query' }
+      td { f.input type: :text, name: :query, value: params[:query].presence }
+    end
+
+    tr do
+      th(width: 100) { f.label 'Regex' }
+      td { f.input type: :text, name: :regex, value: params[:regex].presence }
+    end
+  end
+
+  f.input type: :submit
+end
+
+br
+
+if links.present?
+  paginated_collection(links, download_links: false) do
+    table do
+      thead do
+        tr do
+          th 'Match'
+          th 'Matched URL'
+          th 'URL'
+          th 'Launch'
+          th 'Product'
+        end
+      end
+
+      tbody do
+        links.each do |link|
+          url = link.url
+          url = url.gsub(%r{^https://www\.google\.com/url\?q=}, '')
+          url = url.gsub(%r{^https?://}, '')
+          url = url.gsub(/^www\./, '')
+
+          tr do
+            td(regex.present? && url =~ regex ? '✅' : '❌')
+            td(regex.present? && url =~ regex ? url[regex] : 'N/A')
+            td link.url
+            td(link.post ? link_to(link.post.name, post_path(link.post)) : 'N/A')
+            td(link.post&.new_product.present? ? link_to(link.post.new_product.name, product_path(link.post.new_product)) : 'N/A')
+          end
+        end
+      end
+    end
+  end
+end

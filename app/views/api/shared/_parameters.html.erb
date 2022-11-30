@@ -1,0 +1,31 @@
+<h3>Parameters</h3>
+<table class="table">
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <% @extra_parameter_names.each do |title| %>
+      <th><%= title %></th>
+    <% end %>
+  </tr>
+  <% @example['parameters'].each do |param| %>
+    <tr>
+      <td>
+        <% if param['scope'] %>
+          <%= "#{ param['scope'] }[#{ param['name'] }]" %>
+        <% else %>
+          <%= param['name'] %>
+        <% end %>
+
+        <% if param['required'] %>
+          <span class="required">required</span>
+        <% end %>
+      </td>
+      <td>
+        <%= param['description'] %>
+      </td>
+      <% @extra_parameter_names.each do |extra| %>
+        <td class="extra"><%= param[extra] %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>

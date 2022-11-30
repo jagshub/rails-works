@@ -1,0 +1,33 @@
+Hello, <%= @account.user.name %>,
+
+A friendly reminder your Ship Pro trial has ended.
+
+<% if @recent_subscribers %>
+In the past 7 days, your page "<%= @recent_subscribers[1].name %>" has collected <strong>+<%= @recent_subscribers[0] %></strong> subscribers! 
+<% @recent_subscribers[0] < 100 ? 'Upgrade now to keep promoting your page on Product Hunt.' : 'Keep in touch with them by upgrading today.' %>
+<% end %>
+
+Now that your trial has ended, unlimited messages, product promotion, scheduled launches, and other pro features won’t be accessible.
+
+Our plans start at $<%= Ships::Plans::MONTLY_PRO_PRICE %>/month, and by upgrading now, your project will take full advantage of Ship Pro features. 
+
+UPGRADE TODAY 👉 <%= my_ship_plans_url %>
+
+
+You can cancel your trial from - <%= my_ship_trial_expired_url %>
+
+Have questions about upgrading?
+Our team will be happy to answer any question you might have.<br />
+Contact us or visit our help center.
+
+Let us know if there is anything we can do.
+
+Many thanks,
+Product Hunt team 😸
+
+
+---
+
+
+If you have any questions, feedback, ideas or problems don't hesitate to contact us!</p>
+<%= contact_address %>

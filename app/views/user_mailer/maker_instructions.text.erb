@@ -1,0 +1,16 @@
+Hi, <%= @user.name %>!
+
+Congrats! <%= link_to @post.name, post_url(@post) %> is featured on the homepage of Product Hunt.
+We are a welcoming community of early adopters, makers, investors, journalists, and fellow product-lovers from around the world.
+
+Here are a few tips to make the most of it:
+* Kick off the conversation and leave a comment to describe why you built <%= link_to @post.name, post_url(@post) %>. Give a preview of your roadmap or ask for specific feedback – people enjoy sharing ideas and helping fellow makers. Be sure to check back throughout the day to respond to questions.
+* Add your teammates, the people that helped you build <%= link_to @post.name, post_url(@post) %>. Once you add your teammates <%= link_to 'here', edit_post_submission_url(@post) %>, they'll be listed on your product page as a makers.
+* Invite your friends and community to join the conversation, but please don't ask for upvotes. People should upvote the product because they think it's awesome, not because they're pressed to do so. 🙂
+* Add the badge to your site to drive more awareness to your launch. Grab your embed code <%= link_to 'here', post_embed_url(@post) %>.
+
+And most importantly, have fun!
+
+Questions? Check out our <%= link_to 'help center', 'https://help.producthunt.com/' %> or simply reply to this email.
+
+Product Hunt team 😸

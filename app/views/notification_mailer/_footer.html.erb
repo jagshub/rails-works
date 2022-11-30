@@ -1,0 +1,8 @@
+<tr>
+  <td class="unsubscribe">
+    You can <%= link_to 'opt out', @unsubscribe_url %> of <%= mailer_type %>  or manage all of your email notifications from <%= link_to 'your profile', Routes.my_settings_url %>.
+    <% if @unfollow_url %>
+      Or just <%= link_to "unfollow", @unfollow_url %> this user.
+    <% end %>
+  </td>
+</tr>

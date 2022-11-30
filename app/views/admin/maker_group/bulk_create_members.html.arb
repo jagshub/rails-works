@@ -1,0 +1,35 @@
+# frozen_string_literal: true
+
+div do
+  active_admin_form_for(
+    obj,
+    as: :bulk_create,
+    url: bulk_create_members_admin_maker_group_path,
+  ) do |form|
+    form.semantic_errors *form.object.errors.attribute_names
+
+    form.inputs 'Details' do
+      li class: 'input' do
+        div do
+          span 'This action creates new '
+          strong 'ACCEPTED'
+          span 'group members for '
+          strong obj.name
+        end
+
+        form.input :user_ids, as: :text, hint: 'Comma separated list of user IDs or usernames'
+      end
+    end
+
+    form.actions do
+      form.action(
+        :submit,
+        button_html: {
+          'data-disable-with' => 'Creating...',
+          value: 'Bulk Create',
+        },
+      )
+      form.cancel_link
+    end
+  end
+end

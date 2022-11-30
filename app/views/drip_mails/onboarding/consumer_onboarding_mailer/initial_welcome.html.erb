@@ -1,0 +1,76 @@
+<%= transactional_layout_v2 do %>
+  <%= mobile_preview_tag 'Tech gets better when you chime in. Get started.' %>
+  <div class="transactional-v2-layout-main">
+    <%= render 'mailer/transactional_v2_header', destination: root_url(@tracking_params), tracking_params: @tracking_params %>
+    
+    <table class="announcement-container-md">
+      <tr>
+        <td>
+          <h1 class='large-text'>
+            Welcome to Product Hunt!
+          </h1>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p class='body-text' style='margin-bottom: 20px'>
+            You just joined one of the most fun, inclusive, and startuppy groups of humans on the interwebs.
+          </p>
+          <%= s3_image_tag 'static/email/welcome_email_team.jpg?w=512&h=268', alt: 'Welcome to Product Hunt from all of us', class: 'transactional-v2-body-figure'%>
+          <p class='body-text' style='margin-bottom: 20px'>
+          Since 2014, millions of people have used Product Hunt to find their favorite apps, software, and gadgets. 
+          That’s only a small part of what we do.
+          <br/> <br/>
+          Now that you’re here, you’ll be the first to learn about emerging ideas and help propel the best ones forward. 
+          You’ll add your perspective and contribute to shaping new tech. 
+          You’ll support and celebrate makers building the future. Hopefully, you’ll make a few friends along the way.
+          </p>
+        </td>
+      </tr>
+    </table>
+    
+    <h1 class='bold-text'>
+      Here are a few suggestions for getting started
+    </h1>
+    <table class="listicle">
+      <tr class='list-item'>
+        <td class='icon'>
+          <%= s3_image_tag 'static/email/emoji-icons/magnify.png?w=72', alt: 'Magnify Icon' %>
+        </td>
+        <td class='description'>
+          <b>Discover.</b> Browse new products that have just launched today on the 
+          <%= link_to 'Product Hunt homepage', root_url(@tracking_params), class: 'transactional-v2-link' %> 
+          (or in the  <%= link_to 'app', apps_url(@tracking_params), class: 'transactional-v2-link' %>). 
+        </td>
+      </tr>
+      <tr class='list-item'>
+        <td class='icon'>
+          <%= s3_image_tag 'static/email/emoji-icons/chat-bubble.png?w=72', alt: 'Chat Bubble Icon' %>
+        </td>
+        <td class='description'>
+          <b>Add your voice.</b> Ask the makers about their products, try and leave feedback, and upvote your favorites.
+        </td>
+      </tr> 
+      <tr class='list-item'>
+        <td class='icon'>
+          <%= s3_image_tag 'static/email/emoji-icons/waving-hand.png?w=72', alt: 'Waving Hand Icon' %>
+        </td>
+        <td class='description'>
+          <b>Connect.</b> See the latest <%= link_to 'discussions', discussions_index_url(@tracking_params), class: 'transactional-v2-link' %>, say hello, and chime in! Or start a new discussion yourself on your favorite topic.
+        </td>
+      </tr>
+      <tr class='list-item'>
+        <td class='icon'>
+          <%= s3_image_tag 'static/email/emoji-icons/profile.png?w=72', alt: 'Profile Icon' %>
+        </td>
+        <td class='description'>
+          Update your <%= link_to 'profile', my_profile_url(@tracking_params), target: '_blank', class: 'transactional-v2-link' %>. Let the Product community know more about you, your experience, interests, and goals.
+        </td>
+      </tr>
+    </table>
+    
+    <%= render 'drip_mails/onboarding/cta_footer', cta_text: "See what's new today", link_destination: root_url(@tracking_params) %>
+  </div>
+
+  <%= render 'mailer/social_footer_links_v2', tracking_params: @tracking_params %>
+<% end %>

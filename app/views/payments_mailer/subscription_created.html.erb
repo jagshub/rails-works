@@ -1,0 +1,3 @@
+<%= transactional_layout do %>
+  <%= render "/payments_mailer/subscription_created/#{ @plan.project }", user: @user %>
+<% end %>

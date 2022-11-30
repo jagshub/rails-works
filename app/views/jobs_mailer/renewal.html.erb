@@ -1,0 +1,14 @@
+<%= transactional_layout do %>
+  <%= transactional_box title: 'Your Job listing - Renewal' do %>
+    <p>
+      Your job listing (#<%= @job.id %>) on Product Hunt is about to be renewed.<br/>
+      You can <%= link_to 'edit your listing', edit_job_url(@job) %> to change the role and link if you are now hiring for a different position.
+    </p>
+    <p>
+      <strong>Your subscription</strong><br />
+      It is possible to cancel your subscription at any time via the <%= link_to 'edit form', edit_job_url(@job) %>, <br>note
+      that the started period cannot be refunded.
+    </p>
+    <%= transactional_salutation salute: 'Many thanks', from: 'Emily Hodgins' %>
+  <% end %>
+<% end %>

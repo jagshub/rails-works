@@ -1,0 +1,29 @@
+<%= transactional_layout_v2 do %>
+  <%= mobile_preview_tag 'We want to hear how your launch day went!' %>
+  <div class="transactional-v2-layout-main">
+    <%= render 'mailer/transactional_v2_header', destination: post_url(@post.slug, @tracking_params), tracking_params: @tracking_params %>
+    
+    <table class="announcement-container-md">
+      <tr>
+        <td>
+          <h3 class='greeting-text'>Hi <%= @user.first_name -%>, </h3>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p class='body-text'>
+          We wanted to follow up with you and see how your <%= link_to 'product launch', post_url(@post.slug, @tracking_params), target: '_blank', class: 'transactional-v2-link' %> went!
+
+<br/><br/><b>Get in touch.</b><br/> We’re always looking for new ways to improve, and your feedback would be super valuable. Just hit reply on this email and let us know what you think.
+
+<br/><br/><b>Reach more people.</b><br/> Reach more of the community by <%= link_to 'advertising', sponsor_url(@tracking_params), target: '_blank', class: 'transactional-v2-link' %> your product.
+          <div class='body-text' style='width: 510px; margin: auto'>
+            <%= transactional_salutation version: 'letter', salute: 'Cheers', from: 'The Product Hunt Team' %>
+          </div>         
+        </td>
+      </tr>
+    </table>
+  </div>
+
+      <%= render 'mailer/social_footer_links_v2', tracking_params: @tracking_params %>
+<% end %>

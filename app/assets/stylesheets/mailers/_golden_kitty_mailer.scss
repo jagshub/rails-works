@@ -1,0 +1,72 @@
+.text-light-grey {
+  color: $lighter-grey !important;
+}
+
+.text-dark-grey {
+  color: $darker-grey !important;
+}
+
+.secondary-link {
+  color: $lighter-grey !important;
+  text-decoration: underline;
+}
+
+.gk-layout-main {
+  margin: 0 auto;
+  max-width: 600px;
+  font-size: 16px;
+  background: $white;
+}
+
+.gk-header {
+  font-size: 14px;
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.gk-intro {
+  background-color: $gk-2021-background;
+  max-width: 600px;
+  max-height: 310px;
+
+  .gk-image {
+    width: 100%;
+  }
+}
+
+.gk-nomination-text {
+  font-size: 18px;
+  font-weight: $font-weight-semi-bold;
+  color: $darker-grey;
+}
+
+.gk-separator {
+  background: $light-sky;
+  border: 0;
+  height: 1px;
+  margin-top: $spacing-normal;
+  margin-bottom: $spacing-normal;
+}
+
+.gk-content {
+  padding: 0px 24px 24px;
+  line-height: $line-height-large;
+}
+
+.gk-cta {
+  width: 148px;
+  border-radius: $v6-radius;
+  background-color: $v7-coral;
+  text-align: center;
+  padding: 8px 0px;
+  margin: 20px auto;
+}
+
+.gk-cta-text {
+  font-size: 14px;
+  color: $white !important;
+}
+
+.gk-footer {
+  padding-bottom: 40px;
+}

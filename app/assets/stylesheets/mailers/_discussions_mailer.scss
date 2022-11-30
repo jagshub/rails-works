@@ -1,0 +1,67 @@
+.discussions-digest-subscription-wrapper {
+  padding: $spacing-large 0;
+  border-bottom: 1px solid $silver;
+
+  &:last-child {
+    border: none;
+    padding-bottom: 0;
+  }
+}
+
+table.discussions-digest-comment-table + table.discussions-digest-comment-table,
+table + table.discussions-digest-comment-table {
+  border-top: 1px solid $silver;
+}
+
+.discussions-digest-cell-wrapper {
+  vertical-align: top;
+  text-align: left;
+  padding-top: $spacing-small;
+}
+
+.discussions-digest-comment-table {
+  width: 100%;
+}
+
+.discussions-digest-avatar-wrapper {
+  padding-right: $spacing-small;
+  padding-top: $spacing-small;
+  width: 30px;
+}
+
+.discussions-digest-avatar-thread {
+  padding-left: 50px;
+}
+
+.discussions-digest-user-name {
+  font-weight: $font-weight-semi-bold;
+  margin: 0px !important;
+}
+
+.discussions-digest-bio {
+  font-size: $font-size-normal;
+  font-weight: $font-weight-regular;
+  margin-bottom: $spacing-small !important;
+}
+
+.discussions-digest-comment {
+  color: $grey;
+  padding-bottom: $spacing-normal !important;
+  font-weight: $font-weight-light;
+}
+
+.discussions-digest-comment-parent {
+  color: $grey;
+  font-weight: $font-weight-light;
+}
+
+.discussions-digest-view-button {
+  margin-top: $spacing-large;
+  text-align: center;
+}
+
+.discussions-digest-unfollow-text {
+  font-size: $font-size-normal;
+  text-align: center;
+  padding: $spacing-large 0 !important;
+}

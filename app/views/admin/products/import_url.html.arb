@@ -1,0 +1,36 @@
+# frozen_string_literal: true
+
+div do
+  active_admin_form_for(
+    import,
+    as: :import_url,
+    url: import_url_admin_products_path,
+  ) do |form|
+    form.semantic_errors *form.object.errors.attribute_names
+
+    form.inputs 'Details' do
+      li class: 'input' do
+        div "This creates a new product with `website_url` and `name` and
+          schedules our scrapers to fill it out."
+        strong "Be aware that if you edit the product right after creating
+          through this form, your data MAY be rewritten"
+
+        form.input :name, required: true
+        form.input :tagline, required: true
+        form.input :website_url,
+                   label: 'URL',
+                   hint: 'Include protocol (http:// or https://)'
+      end
+    end
+    form.actions do
+      form.action(
+        :submit,
+        button_html: {
+          'data-disable-with' => 'Creating...',
+          value: 'Import',
+        },
+      )
+      form.cancel_link
+    end
+  end
+end

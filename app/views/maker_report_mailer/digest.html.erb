@@ -1,0 +1,165 @@
+<%= transactional_layout_v2 do %>
+  <%= mobile_preview_tag "Check out the weekly product report for #{@presenter.post_name}" %>
+
+  <div class='transactional-v2-layout-main'>
+    <%= render 'mailer/transactional_v2_header', destination: root_url(@presenter.tracking_params), tracking_params: @presenter.tracking_params %>
+
+    <h1 class='large-text maker-report-header-title'>
+      Weekly product report
+    </h1>
+
+    <table class='maker-report-summary' border="0" cellpadding="0" cellspacing="0" width="100%" height="100%">
+      <tr>
+        <td rowspan='3' width='70' class='maker-report-post-thumbnail'>
+          <%= post_image_tag @presenter.post, size: 52 %>
+        </td>
+        <td>
+          <%= link_to @presenter.post_name, post_url(@presenter.post, @presenter.tracking_params), class: 'maker-report-subject-link' %>
+          <br>
+          <span class='maker-report-subject-tagline'><%= @presenter.post_tagline %></span>
+        </td>
+      </tr>
+    </table>
+
+    <table class='maker-report-metrics' border="0" cellpadding="0" cellspacing="0" width="100%" height="100%">
+      <tr>
+        <td class='maker-report-header-metric'>
+          <span class='maker-report-header-metric-number'><%= @presenter.comments_count %></span><br/>
+          new comments
+        </td>
+        <td class='maker-report-header-metric'>
+          <span class='maker-report-header-metric-number'><%= @presenter.product_alternative_associations_count %></span><br/>
+          related products
+        </td>
+        <td class='maker-report-header-metric'>
+          <span class='maker-report-header-metric-number'><%= @presenter.votes_count %></span><br/>
+          new upvotes
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <% if @presenter.comments_count > 0 %>
+    <div class='transactional-v2-layout-main maker-report-section'>
+      <p class='bold-text maker-report-activity-title'>
+        <%= pluralize(@presenter.comments_count, 'new comment') %>
+      </p>
+
+      <% @presenter.comments.limit(3).each do |comment| %>
+        <table border='0' cellpadding='0' cellspacing='0' width='100%' class='maker-report-section'>
+          <tr>
+            <td width='30'>
+              <%= user_image comment.user, size: 25 %>
+            </td>
+            <td>
+              <%= link_to comment.user.name, profile_url(comment.user, @presenter.tracking_params), class: 'maker-report-activity-user-name' %>
+              <span class='maker-report-activity-user-headline'><%= comment.user.headline %></span>
+            </td>
+          </tr>
+          <tr>
+            <td colspan='2' class='body-text'>
+              <%= simple_format BetterFormatter.call(comment.body, mode: :simple) %>
+            </td>
+          </tr>
+          <tr>
+            <td colspan='2' class='body-text'>
+              <%= link_to 'Reply'.html_safe, comment_url(comment, @presenter.tracking_params), class: 'maker-report-reply' %>
+            </td>
+          </tr>
+        </table>
+      <% end %>
+
+      <% if @presenter.comments_count - 3 > 0 %>
+        <div class='cta-container'>
+          <%= link_to "View #{pluralize(@presenter.comments_count - 3, 'more comment')}", post_url(@presenter.post, @presenter.tracking_params), class: 'cta-link' %>
+        </div>
+      <% end %>
+
+    </div>
+  <% end %>
+
+  <% if @presenter.product_alternative_associations_count > 0 %>
+    <div class='transactional-v2-layout-main maker-report-section'>
+      <p class='bold-text maker-report-activity-title'>
+        <%= pluralize(@presenter.product_alternative_associations_count, 'new alternative products') %>
+      </p>
+
+      <p class='body-text maker-report-activity-subText'>
+        Alternative pages give users another way to discover and consider your product when searching for solutions. <%= link_to @presenter.post_name, post_url(@presenter.post, @presenter.tracking_params), class: 'transactional-v2-link' %> has been added as an alternative to these products:
+      </p>
+
+      <p class='maker-report-section'>
+        <% @presenter.product_alternative_associations.limit(3).each do |product_association| %>
+          <% product = product_association.associated_product %>
+
+          <table class='maker-report-summary' border="0" cellpadding="0" cellspacing="0" width="100%" height="100%">
+            <tr>
+              <td rowspan='3' width='70' class='maker-report-post-thumbnail'>
+                <%= product_image_tag product, size: 55 %>
+              </td>
+              <td>
+                <%= link_to product.name, product_url(product, @presenter.tracking_params), class: 'maker-report-subject-link' %>
+                <br>
+                <span class='maker-report-subject-tagline'><%= product.tagline %></span>
+              </td>
+            </tr>
+          </table>
+        <% end %>
+      </p>
+
+      <% if @presenter.product && @presenter.product_alternative_associations_count - 3 > 0 %>
+        <div class='cta-container'>
+          <%= link_to "View #{@presenter.product_alternative_associations_count - 3} more", product_alternatives_url(@presenter.product, @presenter.tracking_params), class: 'cta-link' %>
+        </div>
+      <% end %>
+
+    </div>
+  <% end %>
+
+  <div class='transactional-v2-layout-main maker-report-section'>
+    <table class='listicle' border="0" cellpadding="0" cellspacing="0" width="100%" height="100%">
+      <tr class='list-item'>
+        <td class='icon'>
+          <%= s3_image_tag 'static/email/emoji-icons/link.png?w=72', alt: 'Link Icon' %>
+        </td>
+        <td class='description'>
+          <span class='description-title'> Drive more traffic </span> <br />
+          Add a badge to your website with a direct link to your product page to drive engagement and show off your progress.
+        </td>
+      </tr>
+    </table>
+
+    <div class='cta-container'>
+      <%= link_to 'Get your badge', post_embed_url(@presenter.post, @presenter.tracking_params), class: 'cta-link' %>
+    </div>
+  </div>
+
+  <div class='transactional-v2-layout-main maker-report-section'>
+    <table class='listicle' border="0" cellpadding="0" cellspacing="0" width="100%" height="100%">
+      <tr class='list-item'>
+        <td class='icon'>
+          <%= s3_image_tag 'static/email/emoji-icons/eyes.png?w=72', alt: 'Eyes Icon' %>
+        </td>
+        <td class='description'>
+          <span class='description-title'>Reach more people </span> <br />
+          Interested in more exposure and engagement with the community? Learn about advertising on Product Hunt.
+        </td>
+      </tr>
+    </table>
+
+    <div class='cta-container'>
+      <%= link_to 'Learn more', advertising_url({ utm_content: 'mr-box' }), class: 'cta-link' %>
+    </div>
+  </div>
+
+  <table class='footer' border="0" cellpadding="0" cellspacing="0" width="100%" height="100%">
+    <tr>
+      <td class='description'>
+        <p>You’re receiving this notification because you recently launched a product on Product Hunt.</p>
+        <p>You can <%= link_to 'manage', edit_my_settings_url %> which email notifications you receive. You can also opt out of <%= link_to 'Maker notifications', @unsubscribe_url %>.</p>
+        <p><%= contact_address %></p>
+        <%= render 'mailer/social_footer_links', utm_content: "mr" %>
+      </td>
+    </tr>
+  </table>
+<% end %>

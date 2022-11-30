@@ -1,0 +1,29 @@
+<%= transactional_layout_v2 do %>
+  <%= mobile_preview_tag 'Discover innovation the day it goes live. ' %>
+  <div class="transactional-v2-layout-main">
+    <%= render 'mailer/transactional_v2_header', destination: root_url(@tracking_params), tracking_params: @tracking_params %>
+    
+    <table class="announcement-container-md">
+      <tr>
+        <td>
+          <h3 class='greeting-text'>Get the newest products in your inbox.</h3>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p class='body-text'>
+            Our daily digest will keep you up-to-date Monday through Friday. We break down the latest trends across product launches, surface products you may have missed, and tell you about exciting events. Sometimes there are cute cat gifs too. 
+          </p>
+          
+          <%= link_to newsletter_index_url(@tracking_params), target: '_blank' do %>
+            <div class='big-cta-button-container'>
+              <p>Subscribe to the Daily</p>
+            </div>
+          <% end %>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <%= render 'mailer/social_footer_links_v2', tracking_params: @tracking_params %>
+<% end %>

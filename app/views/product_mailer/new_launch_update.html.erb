@@ -1,0 +1,62 @@
+<%= transactional_layout do %>
+  <%= transactional_box do %>
+    <p></p>
+    <p>
+      Hey there, <%= @user.first_name %>
+    </p>
+
+    <p>
+      There is a new launch from <%= @product.name -%>.
+    </p>
+
+    <table>
+      <tr class="post-item">
+        <td>
+          <%= link_to post_url(@post, @tracking_params), class: 'post-img' do %>
+            <%= post_image_tag @post, size: 60 -%>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to @post.name, post_url(@post, @tracking_params), class: 'post-name' -%>
+          <%= link_to @post.tagline, post_url(@post, @tracking_params), class: 'description' -%>
+        </td>
+      </tr>
+    </table>
+
+    <% if @post.makers.any? %>
+      <p>
+        Check out and support the latest release from
+
+        <% maker_names = @post.makers.first(3).map { |maker| maker.name } %>
+
+        <% if @post.makers.length <= 3 %>
+          <%= maker_names.to_sentence -%>.
+        <% else %>
+          <%= (maker_names + ["#{ pluralize(@post.makers.length - 3, 'other') }"]).to_sentence -%>.
+        <% end %>
+      </p>
+    <% end %>
+
+    <p>
+      <%= link_to post_url(@post, @tracking_params), class: 'button-primary', rel: 'noopener' do %>
+        View it on Product Hunt
+      <% end %>
+    </p>
+
+    <p class="font-small font-grey">
+      You are receiving this email because you follow the
+      <%= link_to @product.name, product_url(@product, @tracking_params) -%>
+      product hub.
+    </p>
+  <% end %>
+
+
+  <% content_for :footnote do %>
+    <p>
+      You can <%= link_to "opt out", @unsubscribe_url -%> of
+      community update notifications or manage all of your email notifications
+      from your <%= link_to "profile", edit_my_settings_url -%>.
+      Or just unfollow <%= link_to @product.name, @unfollow_url -%>
+    </p>
+  <% end %>
+<% end %>

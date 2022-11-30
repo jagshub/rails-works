@@ -1,0 +1,29 @@
+<% if section.present? %>
+<div class="newsletter-section">
+  <% if section.subtitle.present? %>
+    <div class="label"><%= section.subtitle.upcase %></div>
+  <% end %>
+
+  <% if section.title.present? %>
+    <div class="title">
+      <%= link_to section.title, newsletter_section_url(section, tracking_params: @tracking_editorial), target: '_blank', class: 'title-link' %>
+    </div>
+  <% end %>
+
+  <% if section.image_url.present? %>
+    <%= link_to newsletter_section_url(section, tracking_params: @tracking_editorial), target: '_blank' do -%>
+      <div class="image">
+        <%= image_tag section.image_url %>
+      </div>
+    <% end %>
+  <% end %>
+
+  <div class="content">
+    <%= newsletter_section_content(section, tracking_params: @tracking_editorial) -%>
+  </div>
+
+  <% if section.cta.present? && section.url.present? %>
+    <%= link_to section.cta, newsletter_section_url(section, tracking_params: @tracking_editorial), target: '_blank', class: 'button-primary' -%>
+  <% end %>
+</div>
+<% end %>

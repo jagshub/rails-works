@@ -1,0 +1,105 @@
+// NOTE(rstankov): This files used by legacy scss and email notifications
+//   It is duplicate of `ph/styles/variables.js`
+
+// Note(andreasklinger): All variables defined in config file are
+//   according to our Styleguide, they are "future proof".
+//
+//   All "other" variables of older designs are defined in _legacy_config.scss.
+//
+
+// Styleguide Colors
+//
+//   Please only add colors here if you triple checked that you can't simply
+//   use a similar one from here.
+
+$black: #000; // New Manhattan Black
+$white: #fff; // Flat White
+$silver: #e8e8e8; // So Good Silver
+$grey: #6f6f6f; // Dancing Water Grey
+$orange: #cc4d29; // Silken Splendor Orange
+$yellow: #f5a623; // Philharmonic Yellow
+$blue: #006bff; // Dodger Blue
+$green: #4dc667; // Ambrosia Green
+$cloud: #f5f8ff; // Cloud
+$dark-grey: #21293c; // Dark Grey
+$darker-grey: #21293c; // Darker Grey
+$light-sky: #eef2ff; // Light Sky
+$barely-orange: #fef6f2; // Barely Orange
+$light-grey: #4b587c; // Light Grey
+$lighter-grey: #4b587c; // Lighter Grey
+$light-blue: #d9e1ec; // Light Blue
+$lighter-blue: #d9e1ec; // Lighter Blue
+$v6-orange: #F64900; // v6 Orange
+$v7-coral: #ff6154; // v7 Coral
+$v7-melon: #feb6b0; // v7 Melon
+
+// Function Colors - not in styleguide, but commonly used
+
+$error: #ff8484;
+$maker: #00b27f; // Maker Green
+
+// Vendor Colors
+
+$twitter: #00aced;
+$facebook: #3b5998;
+$google: #3b83f5;
+
+// Golden Kitty 2021
+$gk-2021-background: #08080c;
+$gk-2021-secondary: #ffbd29;
+
+// Font Families
+
+$font-family-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica,
+  Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+
+// Font Sizes
+
+$font-size-large: 20px;
+$font-size-normal: 13px;
+$font-size-small: 11px;
+
+// Font Weights
+
+$font-weight-bold: 700;
+$font-weight-semi-bold: 600;
+$font-weight-regular: 400;
+$font-weight-light: 300;
+
+// Line Heights
+
+$line-height-huge: 34px; // 114%
+$line-height-large: 24px; // 120%
+$line-height-normal: 18px; // 129%
+$line-height-small: 16px; // 125%
+
+// Spacings (margin & padding)
+
+$spacing-small: 10px;
+$spacing-normal: 20px;
+$spacing-large: 30px;
+
+// Screen sizes
+
+$min-site-width: 320px;
+
+$small-screen-breakpoint: 760px;
+$large-screen-breakpoint: 1100px;
+$x-large-screen-breakpoint: 1440px;
+
+// Border radius
+
+$radius: 3px;
+$v6-radius: 4px;
+
+// Note(andreasklinger): This is the legacy variables file
+//   If you notice that certain colors are still needed move them to variables.
+//   Whenever in doubt rather use a color from the styleguide's `variables.css`
+
+$jade: #00b27f;
+
+$lightest-grey: #f7f7fa;
+$light-grey-legacy: #f0efef;
+$dark-silver: #bbb;
+
+$tulip: #f2a43e;

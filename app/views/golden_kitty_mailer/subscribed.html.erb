@@ -1,0 +1,13 @@
+<%= golden_kitty_layout do %>
+  <p> Hey there, </p>
+
+  <p>We're so excited that you're excited about this year's Golden Kitty Awards.</p>
+
+  <%= s3_image_tag 'static/golden-kitty/2021/gk-excited.gif?w=350&h=286', alt: 'Excited for Golden Kitty 2021' %>
+
+  <p>Thanks for being a pawt of this celebration with us. 😸 You're all set to receive email notifications when the nomination and voting periods begin.</p>
+
+  <p>While you're waiting, you can check out the award winners from <%= link_to "last year", 'https://www.producthunt.com/stories/announcing-the-2020-golden-kitty-award-winners', target: '_blank' %>, or follow us on <%= link_to 'Twitter', social_twitter_url, target: 'blank', rel: 'noopener' %> to keep up to date on the latest chatter.</p>
+
+  <%= transactional_salutation salute: 'Stay tuned', from: 'The Product Hunt Team 😸' %>
+<% end %>

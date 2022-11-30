@@ -1,0 +1,16 @@
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td rowspan='3' width='70'>
+      <%= product_image_tag @product, size: 52 %>
+    </td>
+    <td>
+      <span class='body-text'>
+        <%= product_link(@product) %>
+      </span>
+      <br>
+      <span class='body-text'>
+        <%= @product.tagline %>
+      </span>
+    </td>
+  </tr>
+</table>

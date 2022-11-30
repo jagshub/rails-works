@@ -1,0 +1,12 @@
+<table class="transactional-v2-main-header">
+  <tr>
+    <td>
+      <%= link_to root_url(@tracking_params), target: '_blank' do %>
+        <%= s3_image_tag 'static/glasshole_kitty_logo.png', alt: 'Product Hunt', width: '80px', class: 'kitty-logo' %>
+      <% end %>
+    </td>
+    <td class="actions">
+      <%= link_to 'Go To Product Hunt', destination, target: '_blank', class: 'goto-ph-btn' -%>
+    </td>
+  </tr>
+</table>

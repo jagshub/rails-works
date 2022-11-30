@@ -1,0 +1,35 @@
+@import 'variables';
+
+body {
+  background: #1c1c21;
+}
+
+.card {
+  padding: 50px 130px;
+}
+
+.coming-soon {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 30px;
+  color: $white;
+  padding: 12px 16px;
+  border-radius: 36px;
+  background: #ff6154;
+}
+
+.title {
+  margin-top: 32px;
+  color: $white;
+  font-size: 52px;
+  font-weight: 600;
+  line-height: 56px;
+}
+
+.description {
+  margin-top: 32px;
+  color: $lighter-grey;
+  font-size: 48px;
+  font-weight: 300;
+  line-height: 60px;
+}

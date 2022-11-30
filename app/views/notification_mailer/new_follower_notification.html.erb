@@ -1,0 +1,37 @@
+<div class="notification">
+  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <%= notification_header subject: 'You have a new follower on Product Hunt.' %>
+    <tr>
+      <td class="new-follower-line user">
+        <%= link_to_user @follower, size: 60 %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="new-follower-line">
+          <b><%= @follower.name %></b>
+          <br />
+          <%= @follower.headline %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <% if @fun_fact.present? %>
+          <div class="new-follower-line">
+            <b>FUN FACT</b>
+            <br />
+            <%= raw @fun_fact %>
+          </div>
+        <% end %>
+      </td>
+    </tr>
+    <%= notification_action_button "View #{ @follower.first_name }'s Upvotes", profile_url(@follower, @tracking_params) %>
+    <tr>
+      <td class="new-follower-line-last">
+        <%= raw @mutual_friends %>
+      </td>
+    </tr>
+    <%= notification_footer mailer_type: 'new follower notifications' %>
+  </table>
+</div>

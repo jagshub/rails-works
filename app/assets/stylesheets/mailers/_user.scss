@@ -1,0 +1,29 @@
+@import 'variables';
+
+.user {
+  text-decoration: none;
+
+  img {
+    border-radius: 50%;
+  }
+}
+
+.user-image {
+  img {
+    border-radius: 50%;
+  }
+}
+
+.account-suspended-title {
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 32px;
+}
+
+.separator {
+  height: 1px;
+  width: 100%;
+  border-top: 1px solid $silver;
+  margin-bottom: 20px;
+}

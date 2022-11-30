@@ -1,0 +1,28 @@
+<%= transactional_layout do %>
+  <%= transactional_box do %>
+    <p>Hey there, <%= @user.friendly_name %>!</p>
+
+    <p><strong><%= @from_user.name %></strong> just posted <%= link_to "#{ @post.name } - #{ @post.tagline }", Routes.post_url(@post) %>
+
+    <div class="notification" style="padding-bottom: 0;">
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <%= notification_post @post %>
+
+        <% if @comment.present? %>
+          <tr>
+            <td>
+              <br/>
+              Here is what they said about it:
+            </td>
+          </tr>
+          <%= notification_comment @comment %>
+        <% end %>
+
+        <%= notification_action_button 'View on Product Hunt', post_url(@post, @tracking_params) %>
+      </table>
+    </div>
+  <% end %>
+  <%= content_for :footnote do %>
+    <p>You can <%= link_to 'opt out', @unsubscribe_url %> of friend product post notifications or manage all of your email notifications from <%= link_to 'your profile', Routes.my_settings_url %>. Or just <%= link_to "unfollow #{ @from_user.name }", @unfollow_url %></p>
+  <% end %>
+<% end %>

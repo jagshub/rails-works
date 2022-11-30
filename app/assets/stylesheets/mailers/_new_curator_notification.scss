@@ -1,0 +1,36 @@
+.curated-collection {
+  width: 250px;
+  vertical-align: top;
+  border: 1px solid $light-grey-legacy;
+  border-radius: $radius;
+  text-align: center;
+
+  p {
+    padding: 5px;
+    color: $dark-silver;
+    font-size: 14px;
+  }
+
+  h3 {
+    font-weight: $font-weight-bold;
+    color: $black;
+    font-size: 16px;
+  }
+}
+
+.curated-collection-container {
+  padding-top: $spacing-large;
+  padding-bottom: $spacing-large;
+}
+
+.curated-collection--thumbnail {
+  background-position: center center;
+  background-size: cover;
+  width: 250px;
+  height: 140px;
+  margin: 0 auto 0 auto;
+}
+
+.curated-faq {
+  color: $dark-silver;
+}

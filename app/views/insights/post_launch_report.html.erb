@@ -1,0 +1,152 @@
+<!doctype HTML>
+<html lang="en">
+  <head>
+    <title>Product Hunt - Post Launch Insights Report</title>
+    <%= stylesheet_link_tag 'insights_report.css' %>
+  </head>
+  <body>
+    <header>
+      <%= image_tag 'Logo.svg' %>
+      <h2>Launch Day Insights - <%= @post.name -%></h2>
+    </header>
+    <main>
+      <%= render(
+        partial: 'insights/chart_table',
+        locals: { chart_id: 'container1', data: @data[:user_country], title: 'User Country' }
+      ) -%>
+      <%= render(
+        partial: 'insights/chart_table',
+        locals: { chart_id: 'container2', data: @data[:user_employment_role], title: 'User Employment Role' }
+      ) -%>
+      <%= render(
+        partial: 'insights/chart_table',
+        locals: { chart_id: 'container3', data: @data[:company_sector], title: 'Company Sector' }
+      ) -%>
+      <%= render(
+        partial: 'insights/chart_table',
+        locals: { chart_id: 'container4', data: @data[:company_industry], title: 'Company Industry' }
+      ) -%>
+      <%= render(
+        partial: 'insights/chart_table',
+        locals: { chart_id: 'container5', data: @data[:company_sub_industry], title: 'Company Sub-sector' }
+      ) -%>
+      <%= render(
+        partial: 'insights/chart_table',
+        locals: { chart_id: 'container6', data: @data[:company_hq_location], title: 'Company HQ Location' }
+      ) -%>
+      <%= render(
+        partial: 'insights/chart_table',
+        locals: { chart_id: 'container7', data: @data[:company_employees_range], title: 'Company Employees Range' }
+      ) -%>
+      <%= render(
+        partial: 'insights/chart_table',
+        locals: { chart_id: 'container8', data: @data[:company_estimated_annual_revenue], title: 'Company Estimated Annual Revenue' }
+      ) -%>
+      <%= render(
+        partial: 'insights/chart_table',
+        locals: { chart_id: 'container9', data: @data[:company_year_founded], title: 'Year Founded' }
+      ) -%>
+    </main>
+    <%= javascript_include_tag 'highcharts' %>
+    <script type="text/javascript">
+      function chartOptions(data) {
+        return {
+          chart: {
+            type: 'bar',
+            styledMode: true,
+            spacingTop: 0,
+            spacingLeft: 24,
+          },
+
+          title: {
+            text: null
+          },
+
+          xAxis: {
+            categories: data['categories'],
+            title: {
+              text: null
+            },
+            labels: {
+              align: 'left',
+              reserveSpace: true
+            },
+            offset: 24
+          },
+
+          yAxis: {
+            min: 0,
+            title: {
+              text: null
+            },
+            labels: {
+              enabled: false
+            }
+          },
+
+          plotOptions: {
+            bar: {
+              dataLabels: {
+                enabled: true,
+                allowOverlap: true,
+                inside: true,
+                align: 'right',
+                z: 99
+              },
+              animation: false,
+              pointPadding: 0,
+              groupPadding: 0.1,
+              shadow: false,
+            }
+          },
+
+          legend: {
+            enabled: false
+          },
+
+          credits: {
+            enabled: false
+          },
+
+          series: ['views', 'votes', 'clicks'].map(function(key) {
+            return {
+              name: key,
+              data: data[key]
+            }
+          })
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var data = JSON.parse("<%= escape_javascript(render(inline: @data.to_json)) %>")
+        Highcharts.chart('container1', chartOptions(data.user_country));
+        Highcharts.chart('container2', chartOptions(data.user_employment_role));
+        Highcharts.chart('container3', chartOptions(data.company_sector));
+        Highcharts.chart('container4', chartOptions(data.company_industry));
+        Highcharts.chart('container5', chartOptions(data.company_sub_industry));
+        Highcharts.chart('container6', chartOptions(data.company_hq_location));
+        Highcharts.chart('container7', chartOptions(data.company_employees_range));
+        Highcharts.chart('container8', chartOptions(data.company_estimated_annual_revenue));
+
+        // NOTE(DZ): Years Founded is to be sorted by descending category
+        var yearFoundedSorted = data.company_year_founded.categories.map(function(category, idx) {
+          return {
+            category,
+            view: data.company_year_founded.views[idx],
+            vote: data.company_year_founded.votes[idx],
+            click: data.company_year_founded.clicks[idx],
+          }
+        }).sort(function(a, b) {
+          return b.category - a.category
+        })
+        var yearFoundedHash = {
+          categories: yearFoundedSorted.map(function(item) { return item.category }),
+          views: yearFoundedSorted.map(function(item) { return item.view }),
+          votes: yearFoundedSorted.map(function(item) { return item.vote }),
+          clicks: yearFoundedSorted.map(function(item) { return item.click }),
+        }
+        Highcharts.chart('container9', chartOptions(yearFoundedHash));
+      });
+    </script>
+  </body>
+</html>

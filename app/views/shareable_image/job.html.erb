@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <%= stylesheet_link_tag "shareable/base", media: "all" %>
+  <%= stylesheet_link_tag "shareable/job", media: "all" %>
+</head>
+
+<body>
+  <div class="card flexable column gradient-5">
+    <div class="inner-card job-inner-card flexable column align-center">
+      <%= image_tag(
+        @job.image_url + '&fit=max&w=130&h=130',
+        class: 'company-logo',
+        width: 130,
+        height: 130,
+      ) -%>
+      <div class="medium-text black">
+        <b><%= @job.company_name -%></b>
+      </div>
+      <div class="large-text black">
+        <%= @job.job_title -%>
+      </div>
+      <% if @job.remote_ok %>
+        <div class="medium-text grey">
+          Remote
+        </div>
+      <% end %>
+    </div>
+    <div class="sub-inner-card-text white">
+      More jobs on Product Hunt
+    </div>
+    <img
+      class="logo-lower-right"
+      src="<%= S3Helper.url('static/glasshole_kitty_logo.png') %>"
+    />
+  </div>
+</body>
+</html>

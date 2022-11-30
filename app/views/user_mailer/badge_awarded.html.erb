@@ -1,0 +1,50 @@
+<%= transactional_layout do %>
+  <%= transactional_box do %>
+  <p></p>
+  <p>
+    Hey there, <%= @user.first_name -%>!
+  </p>
+
+  <p>
+    We want to share a token of our appreciation. Badges help people recognize
+    the effort you put into helping this community, and we think you should have
+    this one:
+  </p>
+
+  <p>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="center">
+          <%= link_to(
+            image_tag(Image.call(@badge.award.image_uuid, dpr: 2, width: 80, height: 80)),
+            profile_badges_url(@user, @tracking_params),
+          ) -%>
+        </td>
+      </tr>
+      <tr>
+        <td style="text-align: center; padding-top: 20px;">
+          <%= @badge.award.description -%>
+        </td>
+      </tr>
+    </table>
+  </p>
+
+  <p>
+    Check out the latest addition to your trophy case in your profile or see
+    what you're on your way to earning next.
+  </p>
+
+  <%= link_to profile_badges_url(@user, @tracking_params), class: 'button-primary', rel: 'noopener' do %>
+    Visit your profile
+    <% end %>
+  <p>
+  <% end %>
+
+  <% content_for :footnote do %>
+    <p>
+      You can <%= link_to 'manage', edit_my_settings_url -%> which email
+      notifications you receive. You can also opt out of
+      <%= link_to 'community updates', @unsubscribe_url -%>.
+    </p>
+  <% end %>
+<% end %>

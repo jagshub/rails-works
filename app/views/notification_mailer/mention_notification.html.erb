@@ -1,0 +1,19 @@
+<%= transactional_layout do %>
+  <%= transactional_box do %>
+    <p>Hey there, <%= @user.friendly_name %>!</p>
+
+    <p><strong><%= @from_user.name %></strong> mentioned you in <%= link_to "#{ @comment.subject_name }", Routes.comment_url(@comment) %>.</p>
+    <br/>
+
+    <div class="notification top-border" style="padding: 0;">
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <%= notification_comment @comment %>
+
+        <%= notification_action_button 'View on Product Hunt', comment_url(@comment, @tracking_params.merge(comment: @comment.id)) %>
+      </table>
+    </div>
+  <% end %>
+  <%= content_for :footnote do %>
+    <p>You can <%= link_to 'opt out', @unsubscribe_url %> of mention notifications or manage all of your email notifications from <%= link_to 'your profile', Routes.my_settings_url %>.</p>
+  <% end %>
+<% end %>

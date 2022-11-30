@@ -1,0 +1,50 @@
+<%= hidden_field_tag("newsletter[sponsor_attributes][id]", sponsor&.id) -%>
+<li>
+  <%= label_tag("newsletter_sponsor_image_uuid", 'Logo') %>
+  <%= inline_file_upload(
+    id: "newsletter_sponsor_image_uuid",
+    name: "newsletter[sponsor_attributes][image_uuid]",
+    value: sponsor&.image_uuid,
+  ) %>
+</li>
+<li>
+  <%= label_tag("newsletter_sponsor_link", 'Link') %>
+  <%= text_field_tag(
+    "newsletter[sponsor_attributes][link]",
+    sponsor&.link,
+    id: 'newsletter_sponsor_link',
+    placeholder: 'Example: https://www.producthunt.com?utm_campaign=test',
+    hint: 'Link will be used for logo image, body image, and cta',
+  ) %>
+</li>
+<li>
+  <%= label_tag("newsletter_sponsor_cta", 'CTA') %>
+  <%= text_field_tag(
+    'newsletter[sponsor_attributes][cta]',
+    sponsor&.cta,
+    id: "newsletter_sponsor_cta",
+  ) %>
+</li>
+<li>
+  <%= label_tag("newsletter_sponsor_body_image_uuid", 'Body Image') %>
+  <%= inline_file_upload(
+    id: "newsletter_sponsor_body_image_uuid",
+    name: "newsletter[sponsor_attributes][body_image_uuid]",
+    value: sponsor&.body_image_uuid,
+  ) %>
+</li>
+<li>
+  <%= label_tag("newsletter_sponsor_description_html", 'Description HTML') %>
+  <%= text_area_tag(
+    'newsletter[sponsor_attributes][description_html]',
+    sponsor&.description_html,
+    id: 'newsletter_sponsor_description_html',
+    placeholder: 'Enter description html',
+  ) %>
+</li>
+<% if sponsor.present? %>
+  <li>
+    <%= label_tag("newsletter_sponsor_destroy", 'Delete sponsorship?') %>
+    <%= check_box_tag('newsletter[sponsor_attributes][_destroy]') %>
+  </li>
+<% end %>

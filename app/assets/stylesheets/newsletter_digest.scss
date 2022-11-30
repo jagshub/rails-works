@@ -1,0 +1,389 @@
+@import 'variables';
+
+body {
+  background-color: $cloud;
+  font-family: $font-family-system;
+  margin: 0;
+  padding: 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+
+  td {
+    box-sizing: border-box;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a.orange {
+  color: $v7-coral;
+  text-decoration: none;
+}
+
+a.button-primary {
+  height: 40px;
+  border-radius: 4px;
+  background-color: $v7-coral;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 24px;
+  text-align: center;
+  padding: 10px 25px;
+  text-decoration: none;
+}
+
+.label {
+  color: $v7-coral;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 24px;
+  margin-bottom: 8px;
+}
+
+@mixin html-content {
+  color: $darker-grey;
+  font-size: 14px;
+  line-height: 24px;
+  /* NOTE(DZ): Do not use other white-space css. This is to support legacy
+   * newsletters that use <br /> to create line-breaks
+   */
+  white-space: normal;
+
+  ul {
+    padding-left: 24px;
+  }
+}
+
+.newsletter-main {
+  margin: 0 auto;
+  max-width: 600px;
+  padding: $spacing-normal 8px;
+  font-size: 15px;
+}
+
+.newsletter-text {
+  margin-top: 24px;
+  color: #4b587c;
+  font-size: 12px;
+}
+
+.newsletter-section {
+  background: white;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 24px;
+  padding: 24px;
+
+  a.title-link {
+    display: block;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 40px;
+    color: $darker-grey;
+    text-decoration: none;
+    margin-bottom: 8px;
+  }
+
+  .image {
+    width: 100%;
+    max-height: 275px;
+    margin-bottom: 16px;
+
+    img {
+      width: 100%;
+      max-height: 275px;
+      object-fit: cover;
+    }
+  }
+
+  .content {
+    @include html-content;
+    margin-bottom: 16px;
+
+    a {
+      color: $blue;
+    }
+  }
+}
+
+.newsletter-header {
+  .actions {
+    text-align: right;
+
+    .action {
+      color: $darker-grey;
+      font-size: 12px;
+      font-weight: 600;
+      vertical-align: middle;
+
+      img {
+        width: 18px;
+      }
+    }
+
+    .action + .action {
+      margin-left: 15px;
+    }
+  }
+
+  .sp-onsor {
+    line-height: 24px;
+    text-align: center;
+
+    i {
+      color: #4b587c;
+      font-size: 12px;
+    }
+
+    .sp-onsor-logo {
+      vertical-align: middle;
+      max-width: 312px;
+      max-height: 24px;
+    }
+  }
+}
+
+.newsletter-welcome-heading {
+  color: $darker-grey;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: -0.5px;
+  line-height: 24px;
+  margin-bottom: 12px;
+}
+
+.newsletter-welcome-message {
+  color: $darker-grey;
+  font-size: 14px;
+  line-height: 24px;
+  margin-bottom: 24px;
+
+  a {
+    color: $blue;
+  }
+}
+
+.newsletter-story {
+  padding: 24px;
+
+  .title {
+    color: $darker-grey;
+    font-size: 32px;
+    font-weight: 900;
+    line-height: 40px;
+    margin-bottom: $spacing-normal;
+  }
+
+  .description {
+    color: $darker-grey;
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 16px;
+  }
+
+  .read-more {
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    background: $barely-orange;
+    color: $v7-coral;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 14px;
+  }
+}
+
+.newsletter-sponsor {
+  padding: 24px;
+
+  .body-image {
+    width: 100%;
+    margin-bottom: 16px;
+    display: block;
+
+    img {
+      width: 100%;
+      max-height: 180px;
+      max-width: 552px;
+      object-fit: cover;
+    }
+  }
+
+  .description {
+    @include html-content;
+    margin-bottom: 16px;
+
+    a {
+      color: $blue;
+    }
+  }
+}
+
+.newsletter-posts {
+  padding: 24px;
+
+  .date {
+    color: $v7-coral;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 24px;
+    margin-bottom: 10px;
+  }
+
+  .title {
+    color: $darker-grey;
+    font-size: 32px;
+    font-weight: bold;
+    letter-spacing: -0.5px;
+    line-height: 40px;
+  }
+
+  table.post-items {
+    border-spacing: 0 10px;
+
+    td {
+      padding: 5px 10px;
+    }
+  }
+
+  .post-item {
+    border-bottom: 1px solid $light-sky;
+
+    td {
+      vertical-align: top;
+    }
+
+    .post-img {
+      display: block;
+      padding: 10px 0;
+      height: 80px;
+
+      img {
+        border-radius: 3px;
+      }
+    }
+
+    .post-name {
+      display: block;
+      margin: 5px 0;
+      color: $darker-grey;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 24px;
+    }
+
+    .description {
+      display: block;
+      margin-bottom: 5px;
+      color: $lighter-grey;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 24px;
+    }
+
+    .upvotes {
+      display: block;
+      color: $lighter-grey;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 20px;
+    }
+
+    &.promoted .upvotes {
+      margin-bottom: 10px;
+
+      a {
+        color: $lighter-grey;
+      }
+
+      .promoted-tooltip {
+        color: $blue;
+        font-weight: 200;
+
+        img {
+          width: 12px;
+        }
+      }
+
+      .promoted-question {
+        display: inline-block;
+        height: 12px;
+        text-align: center;
+        width: 12px;
+        font-weight: 100;
+        line-height: 12px;
+        color: white;
+        background: $blue;
+      }
+    }
+  }
+
+  .discover-more {
+    margin: 0 auto;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    background: $barely-orange;
+    color: $v7-coral;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 14px;
+    margin-top: 24px;
+  }
+}
+
+table.newsletter-nps {
+  margin-top: 40px;
+
+  .nps-title {
+    display: block;
+    text-align: center;
+    color: $darker-grey;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 24px;
+    margin-bottom: 8px;
+  }
+
+  .nps-description {
+    display: block;
+    text-align: center;
+    color: $darker-grey;
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 16px;
+  }
+
+  .nps-cta {
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: $lighter-grey;
+    background-color: $lighter-blue;
+    border-radius: 3px;
+    text-align: center;
+  }
+}
+
+.newsletter-footer {
+  margin-top: 40px;
+
+  a {
+    color: $lighter-grey;
+    text-decoration: underline;
+  }
+
+  color: $lighter-grey;
+  font-size: 12px;
+  line-height: 24px;
+  text-align: center;
+}

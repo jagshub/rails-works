@@ -1,0 +1,57 @@
+@import 'variables';
+
+html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial,
+    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  height: 100%;
+}
+
+body {
+  background-color: #f3f3f3;
+}
+
+#container {
+  border-radius: 5px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border: 0;
+
+  header.page-header {
+    margin: 0;
+    padding-bottom: 10px;
+    text-align: center;
+
+    > h1 {
+      margin: 0;
+    }
+  }
+
+  main[role='main'] {
+    margin-top: 20px;
+
+    .actions {
+      margin-top: 20px;
+    }
+  }
+
+  .btn.btn-success {
+    background-color: $v7-coral;
+    border: 0;
+    border-radius: 3px;
+  }
+
+  .btn.btn-danger {
+    background-color: $white;
+    border-color: $silver;
+    color: #888;
+    border-radius: 3px;
+  }
+
+  .text-info {
+    font-weight: 500;
+
+    li:not(:last-child) {
+      margin-bottom: 5px;
+    }
+  }
+}

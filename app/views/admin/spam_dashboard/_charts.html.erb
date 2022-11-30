@@ -1,0 +1,11 @@
+<h2>Today Featured Post Votes<h2/>
+<%= line_chart SpamChecks.admin_dashboard.vote_spike_chart %>
+
+<h2>Auto System Vs Manual Actions</h2>
+<%= column_chart SpamChecks.admin_dashboard.auto_vs_manual_actions_chart, stacked: true %>
+
+<h2>Spam Caught By System</h2>
+<%= column_chart SpamChecks.admin_dashboard.spam_caught_chart, stacked: true %>
+
+<h2>Manual Actions</h2>
+<%= column_chart SpamChecks.admin_dashboard.manual_actions_chart, stacked: true %>

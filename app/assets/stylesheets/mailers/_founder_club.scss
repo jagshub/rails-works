@@ -1,0 +1,31 @@
+.founder-club {
+  text-align: center;
+}
+
+.founder-club-emoji {
+  font-size: 40px;
+  margin: 20px 0;
+}
+
+.founder-club-code {
+  border: 2px dashed $v7-coral;
+  color: $v7-coral;
+  margin: 20px 40px 40px;
+  padding: 20px;
+  font-size: 21px;
+  background-color: rgba(236, 73, 28, 0.05);
+}
+
+.founder-club-deal {
+  border: 1px solid $silver;
+  border-radius: $radius;
+  padding: $spacing-small;
+
+  & + & {
+    margin-top: $spacing-large;
+  }
+}
+
+.founder-club-salute {
+  margin-bottom: $spacing-normal !important;
+}

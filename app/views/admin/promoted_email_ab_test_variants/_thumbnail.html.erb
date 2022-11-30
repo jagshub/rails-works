@@ -1,0 +1,8 @@
+<fieldset class="inputs">
+  <ol>
+    <li>
+      <%= label_tag('Upload Thumbnail') %>
+      <%= inline_file_upload(id: "upload", name: "promoted_email_ab_test_variant[thumbnail_uuid]", value: variant.thumbnail_uuid) %>
+    </li>
+  </ol>
+</fieldset>
